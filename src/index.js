@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import FilterableProductTable from './App';
+import HomeContainer from './components/home/homeContainer';
 import * as serviceWorker from './serviceWorker';
 
 const PRODUCTS = [
@@ -15,7 +16,7 @@ const PRODUCTS = [
     {category: 'Weed', price: '$199.99', stocked: true, name: 'Sandy Kush'}
   ];
 
-ReactDOM.render(<FilterableProductTable products={PRODUCTS}/>, document.getElementById('root'));
+ReactDOM.render(<HomeContainer />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
