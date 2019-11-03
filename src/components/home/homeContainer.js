@@ -1,10 +1,17 @@
 import React from 'react';
 import './homeContainer.css';
 
+let iconSeed = require("../../assets/home/seed.png");
+let iconFlower = require("../../assets/home/flower.png");
+let iconExtract = require("../../assets/home/extract.png");
+let logo = require("../../assets/home/logo.png");
+let parallax_1 = require("../../assets/home/parallax-1.png");
+let parallax_2 = require("../../assets/home/parallax-2.png");
+
 const listSection = [
-    {img:"../",title:"Seed",summary:"lorem"},
-    {img:"../",title:"Flower",summary:"lorem"},
-    {img:"../",title:"Extract",summary:"lorem"}
+    {img:iconSeed,title:"Seed",summary:"lorem",class:"list-img-title"},
+    {img:iconFlower,title:"Flower",summary:"lorem",class:"list-img-title pd-left-3"},
+    {img:iconExtract,title:"Extract",summary:"lorem",class:"list-img-title pd-left-3"}
 ];
 class HomeContainer extends React.Component{
     render(){
@@ -37,7 +44,10 @@ class TitleContainer extends React.Component{
         return(
             <>
             <section className='title-container'>
+                <img src={parallax_1}></img>
                 <div>
+                    <img class="logo-img" src={logo}></img>
+                    <br/>
                     <span className='title'>UN NUEVO CONCEPTO EN FLORES</span>
                     <br/>
                     <br/>
@@ -61,7 +71,7 @@ class ImgSection extends React.Component{
 
     render(){
         return(
-            <img className="list-img-title" src={this.props.section.title}></img>
+            <img className={this.props.section.class} src={this.props.section.img}></img>
         );
     }
 }
