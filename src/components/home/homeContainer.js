@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import './homeContainer.css';
+import {useScroll} from '../useScroll';
 
 let logo = require("../../assets/home/logo.png");
 let parallax_1 = require("../../assets/home/parallax-1.png");
@@ -16,12 +17,21 @@ function HomeContainer(props){
 function TitleContainer(props){
     const [sectionOn,setSectionOn] = useState(false);
     const [dataSectionView,setDataSectionView] = useState({});
+    const { scrollX, scrollY, scrollDirection } = useScroll(); //654
     
     function changeSection(data,sectionOnInd){
         setSectionOn(sectionOnInd);
         setDataSectionView(data)
     }
-        
+    const goMeetUs = e => {
+        let scrollAux = 0;
+        while(scrollAux < 654){
+            window.scrollTo(0,scrollAux);
+            console.log(scrollAux);
+            scrollAux++;
+        }
+    }
+
     return(
         <>
             {!sectionOn && 
@@ -34,7 +44,7 @@ function TitleContainer(props){
                         <span className='title'>UN NUEVO CONCEPTO EN FLORES</span>
                         <br/>
                         <br/>
-                        <button className='btn-explore'>Conócelo</button>
+                        <button className='btn-explore' onClick={goMeetUs}>Conócelo</button>
                         <br/>
                         <div className="pd-1">
                             {props.listSection.map((item) => <ImgSection key={item.title} section={item}
@@ -63,8 +73,25 @@ function ImgSection(props){
 
 function MeetThemView(props) {
     return(
-        <section className='meet-them'>
-
+        <section>
+            <div className='meet-them'>
+                <div className="meet-left meet-container">
+                    <div>
+                        <span className="title-meet">¿Quiénes somos?</span>
+                    </div>
+                    <div>
+                        <span className="text-meet">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel iaculis sem. Phasellus faucibus dui at nibh venenatis euismod. Fusce non pharetra nulla, sed fringilla tellus. Aliquam erat volutpat. Cras fermentum congue nibh, eget aliquet arcu finibus vel. Aenean sed felis fringilla, consectetur odio vitae, fringilla sapien. Morbi facilisis orci a odio tempus, vel tincidunt risus lacinia. Nulla quis leo at felis rutrum condimentum. Suspendisse id neque id neque tempus convallis non in erat. Maecenas pharetra ex eu libero imperdiet mattis. Vivamus sed augue id purus pharetra faucibus commodo non massa.</span>
+                    </div>
+                </div>
+                <div className="meet-rigth meet-container">
+                    <div>
+                        <span className="title-meet">¿Qué ofrecemos?</span>
+                    </div>
+                    <div>
+                        <span className="text-meet">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel iaculis sem. Phasellus faucibus dui at nibh venenatis euismod. Fusce non pharetra nulla, sed fringilla tellus. Aliquam erat volutpat. Cras fermentum congue nibh, eget aliquet arcu finibus vel. Aenean sed felis fringilla, consectetur odio vitae, fringilla sapien. Morbi facilisis orci a odio tempus, vel tincidunt risus lacinia. Nulla quis leo at felis rutrum condimentum. Suspendisse id neque id neque tempus convallis non in erat. Maecenas pharetra ex eu libero imperdiet mattis. Vivamus sed augue id purus pharetra faucibus commodo non massa.</span>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 }
@@ -84,6 +111,7 @@ function SectionView(props) {
     }
 
     return(
+        
         <h1 onClick={returnHome}>{props.dataSection.summary}</h1>
     );
 }

@@ -7,6 +7,10 @@
     background-repeat: no-repeat;*/
 }
 
+.title-change-color{
+    background-color: #ffffff;
+}
+
 .back-container{
     position: absolute;
     z-index: -1;
@@ -63,4 +67,33 @@
 
 .meet-them{
     height: 100vh;
-  }
+}
+
+.meet-left{
+    text-align: left;
+    padding-top: 3em;
+}
+
+.meet-rigth{
+    text-align: right;
+}
+
+.meet-container{
+    height: 50%;
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+.meet-container>div:first-child{
+    padding-bottom: 2em;
+}
+
+.title-meet{
+    color: #ffffff;
+    font-size: 3em;
+}
+
+.text-meet{
+    color: #ffffff;
+    font-size: 1em;
+}
