@@ -1,12 +1,12 @@
 /**
  * useScroll React custom hook
  * Usage:
- *    const { scrollX, scrollY, scrollDirection } = useScroll();
+ *    const { scrollX, scrollY, scrollDirection } = useScroll(functionCall);
  */
 
 import { useState, useEffect } from "react";
 
-export function useScroll() {
+export function useScroll(handlerScroll) {
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [bodyOffset, setBodyOffset] = useState(
     document.body.getBoundingClientRect()
@@ -21,6 +21,7 @@ export function useScroll() {
     setScrollX(bodyOffset.left);
     setScrollDirection(lastScrollTop > -bodyOffset.top ? "down" : "up");
     setLastScrollTop(-bodyOffset.top);
+    handlerScroll(scrollY);
   };
 
   useEffect(() => {

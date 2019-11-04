@@ -2,13 +2,10 @@
     width: 100%;
     height: 100vh;
     text-align: center;
-    /*background-image: url(../../assets/home/parallax-2.png),url(../../assets/home/parallax-1.png);
-    background-position: bottom;
-    background-repeat: no-repeat;*/
 }
 
 .title-change-color{
-    background-color: #ffffff;
+    background: #ffffff;
 }
 
 .back-container{
@@ -35,6 +32,11 @@
 .list-img-title{
     width: auto;
     height: 5em;
+}
+
+.btn-section{
+    background-color: #fff0;
+    border: none;
 }
 
 .pd-left-3{
@@ -65,13 +67,12 @@
     height: 100vh;
 }
 
-.meet-them{
+#meet-them-container{
     height: 100vh;
 }
 
 .meet-left{
     text-align: left;
-    padding-top: 3em;
 }
 
 .meet-rigth{
@@ -79,13 +80,13 @@
 }
 
 .meet-container{
-    height: 50%;
     padding-left: 3em;
     padding-right: 3em;
+    padding-top: 3em;
 }
 
-.meet-container>div:first-child{
-    padding-bottom: 2em;
+.meet-container>div{
+    padding-bottom: 2rem;
 }
 
 .title-meet{

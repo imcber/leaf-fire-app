@@ -6,6 +6,8 @@ let logo = require("../../assets/home/logo.png");
 let parallax_1 = require("../../assets/home/parallax-1.png");
 let parallax_2 = require("../../assets/home/parallax-2.png");
 
+const loremDummy = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel iaculis sem. Phasellus faucibus dui at nibh venenatis euismod. Fusce non pharetra nulla, sed fringilla tellus. Aliquam erat volutpat. Cras fermentum congue nibh, eget aliquet arcu finibus vel. Aenean sed felis fringilla, consectetur odio vitae, fringilla sapien. Morbi facilisis orci a odio tempus, vel tincidunt risus lacinia. Nulla quis leo at felis rutrum condimentum. Suspendisse id neque id neque tempus convallis non in erat. Maecenas pharetra ex eu libero imperdiet mattis. Vivamus sed augue id purus pharetra faucibus commodo non massa.";
+
 function HomeContainer(props){
     return(
         <section className="main-section">
@@ -17,26 +19,28 @@ function HomeContainer(props){
 function TitleContainer(props){
     const [sectionOn,setSectionOn] = useState(false);
     const [dataSectionView,setDataSectionView] = useState({});
-    const { scrollX, scrollY, scrollDirection } = useScroll(); //654
-    
-    function changeSection(data,sectionOnInd){
+    const [colorScroll,setColorScroll] = useState(false);
+    const handlerScroll = (positionY) =>{
+        if(positionY >= 120){
+            setColorScroll(true);
+        }else{
+            setColorScroll(false);
+        }
+    }
+    const { scrollX, scrollY, scrollDirection } = useScroll(handlerScroll); //654
+    const changeSection = (data,sectionOnInd) =>{
         setSectionOn(sectionOnInd);
         setDataSectionView(data)
-    }
-    const goMeetUs = e => {
-        let scrollAux = 0;
-        while(scrollAux < 654){
-            window.scrollTo(0,scrollAux);
-            console.log(scrollAux);
-            scrollAux++;
-        }
+    } 
+    const goMeetUs = () => {
+        document.querySelector('#meet-them-container').scrollIntoView({behavior: 'smooth'});
     }
 
     return(
         <>
             {!sectionOn && 
-                <section className='title-container'>
-                    <BackImg img={parallax_1}/>
+                <section className={'title-container'}>
+                    <BackImg img={parallax_1} class={colorScroll?'title-change-color':''}/>
                     <BackImg img={parallax_2}/>
                     <div className='elem-container'>
                         <img className="logo-img" src={logo}></img>
@@ -53,6 +57,7 @@ function TitleContainer(props){
                     </div>
                 </section>
             }
+            <br/>
             {!sectionOn ?<MeetThemView />:<SectionView dataSection={dataSectionView} onChangeSection={changeSection}/>}
         </>
     );
@@ -64,33 +69,30 @@ function ImgSection(props){
     }
 
     return(
-        <a className={props.section.class}>
+        <button className={'btn-section '+props.section.class}>
             <img className='list-img-title' src={props.section.img} onClick={handleChange}/>
-        </a>
+        </button>
     );
 }
 
 
 function MeetThemView(props) {
+    function MeetThemComp(props) {
+        return(
+            <div className={props.class}>
+                <span>{props.text}</span>
+            </div>
+        );
+    }
     return(
-        <section>
-            <div className='meet-them'>
-                <div className="meet-left meet-container">
-                    <div>
-                        <span className="title-meet">¿Quiénes somos?</span>
-                    </div>
-                    <div>
-                        <span className="text-meet">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel iaculis sem. Phasellus faucibus dui at nibh venenatis euismod. Fusce non pharetra nulla, sed fringilla tellus. Aliquam erat volutpat. Cras fermentum congue nibh, eget aliquet arcu finibus vel. Aenean sed felis fringilla, consectetur odio vitae, fringilla sapien. Morbi facilisis orci a odio tempus, vel tincidunt risus lacinia. Nulla quis leo at felis rutrum condimentum. Suspendisse id neque id neque tempus convallis non in erat. Maecenas pharetra ex eu libero imperdiet mattis. Vivamus sed augue id purus pharetra faucibus commodo non massa.</span>
-                    </div>
-                </div>
-                <div className="meet-rigth meet-container">
-                    <div>
-                        <span className="title-meet">¿Qué ofrecemos?</span>
-                    </div>
-                    <div>
-                        <span className="text-meet">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel iaculis sem. Phasellus faucibus dui at nibh venenatis euismod. Fusce non pharetra nulla, sed fringilla tellus. Aliquam erat volutpat. Cras fermentum congue nibh, eget aliquet arcu finibus vel. Aenean sed felis fringilla, consectetur odio vitae, fringilla sapien. Morbi facilisis orci a odio tempus, vel tincidunt risus lacinia. Nulla quis leo at felis rutrum condimentum. Suspendisse id neque id neque tempus convallis non in erat. Maecenas pharetra ex eu libero imperdiet mattis. Vivamus sed augue id purus pharetra faucibus commodo non massa.</span>
-                    </div>
-                </div>
+        <section id='meet-them-container'>
+            <div className='meet-container'>
+                <MeetThemComp class={"meet-left title-meet"} text={"¿Quiénes somos?"}/>
+                <MeetThemComp class={"meet-left text-meet"} text={loremDummy}/>
+            </div>
+            <div className='meet-container'>
+                <MeetThemComp class={"meet-rigth title-meet"} text={"¿Qué ofrecemos?"}/>
+                <MeetThemComp class={"meet-rigth text-meet"} text={loremDummy}/>
             </div>
         </section>
     );
@@ -98,7 +100,7 @@ function MeetThemView(props) {
 
 function BackImg(props) {
     return(
-        <div className='back-container'>
+        <div className={'back-container ' + props.class}>
             <img className='back-img' src={props.img}></img>
         </div>
     );
