@@ -4,10 +4,15 @@
     text-align: center;
 }
 
-.title-change-color{
+.title-change-color-W{
     background: #ffffff;
+    transition: background 2s ease !important;
 }
 
+.title-change-color-B{
+    background: #0d3940;
+    transition: background 2s ease !important;
+}
 .back-container{
     position: absolute;
     z-index: -1;
@@ -56,6 +61,11 @@
     font-size: 18px;
     font-family: Avenir;
 }
+
+.btn-explore:hover{
+    background-color: #a51d26;
+}
+
 
 .logo-img{
     width: auto;

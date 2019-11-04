@@ -21,7 +21,8 @@ function TitleContainer(props){
     const [dataSectionView,setDataSectionView] = useState({});
     const [colorScroll,setColorScroll] = useState(false);
     const handlerScroll = (positionY) =>{
-        if(positionY >= 120){
+        let directionValue = scrollDirection === "up"?80:320;
+        if(scrollY >= directionValue){
             setColorScroll(true);
         }else{
             setColorScroll(false);
@@ -33,14 +34,14 @@ function TitleContainer(props){
         setDataSectionView(data)
     } 
     const goMeetUs = () => {
-        document.querySelector('#meet-them-container').scrollIntoView({behavior: 'smooth'});
+       document.querySelector('#meet-them-container').scrollIntoView({behavior: 'smooth'});
     }
 
     return(
         <>
             {!sectionOn && 
                 <section className={'title-container'}>
-                    <BackImg img={parallax_1} class={colorScroll?'title-change-color':''}/>
+                    <BackImg img={parallax_1} class={colorScroll?'title-change-color-W':'title-change-color-B'}/>
                     <BackImg img={parallax_2}/>
                     <div className='elem-container'>
                         <img className="logo-img" src={logo}></img>
