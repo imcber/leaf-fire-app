@@ -3,16 +3,26 @@ import './homeContainer.css';
 import {useScroll} from '../useScroll';
 
 let logo = require("../../assets/home/logo.png");
-let parallax_1 = require("../../assets/home/parallax-13.png");
-let parallax_2 = require("../../assets/home/parallax-23.png");
+let parallax_1 = require("../../assets/home/parallax-1.png");
+let parallax_2 = require("../../assets/home/parallax-2.png");
 
 const loremDummy = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel iaculis sem. Phasellus faucibus dui at nibh venenatis euismod. Fusce non pharetra nulla, sed fringilla tellus. Aliquam erat volutpat. Cras fermentum congue nibh, eget aliquet arcu finibus vel. Aenean sed felis fringilla, consectetur odio vitae, fringilla sapien. Morbi facilisis orci a odio tempus, vel tincidunt risus lacinia. Nulla quis leo at felis rutrum condimentum. Suspendisse id neque id neque tempus convallis non in erat. Maecenas pharetra ex eu libero imperdiet mattis. Vivamus sed augue id purus pharetra faucibus commodo non massa.";
 
 function HomeContainer(props){
     return(
-        <section className="main-section">
-            <TitleContainer listSection={props.listSection}/>
-        </section>
+        <>
+            <section className="main-section">
+                <TitleContainer listSection={props.listSection}/>
+            </section>
+        </>
+    );
+}
+
+function NavBar(props) {
+    return(
+        <div className="main-navbar">
+            <img className='logo-navbar' src={logo}/>
+        </div>
     );
 }
 
@@ -25,10 +35,13 @@ function TitleContainer(props){
         let directionValue = scrollDirection === "up"?80:320;
         if(scrollY >= directionValue){
             setColorScroll(true);
-            setNavBarOn(true);
         }else{
             setColorScroll(false);
+        }
+        if(scrollY < 20){
             setNavBarOn(false);
+        }else{
+            setNavBarOn(true);
         }
     }
     const { scrollX, scrollY, scrollDirection } = useScroll(handlerScroll); //654
@@ -47,8 +60,10 @@ function TitleContainer(props){
                     <BackImg img={parallax_1} class={colorScroll?'title-change-color-W':'title-change-color-B'}/>
                     <BackImg img={parallax_2} class={''}/>
                     <div className='elem-container'>
-                        <div className="logo-container">
-                            <img className={navBarOn?'navbar-on':'logo-img'} src={logo}></img>
+                        <div className={"logo-container"}>
+                            <div className={navBarOn?'navbar-on-after':''}>
+                                <img className={navBarOn?'navbar-on':'logo-img'} src={logo}/>
+                            </div>
                         </div>
                         <br/>
                         <span className='title'>UN NUEVO CONCEPTO EN FLORES</span>

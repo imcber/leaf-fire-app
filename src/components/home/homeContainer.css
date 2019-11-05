@@ -4,6 +4,19 @@
     text-align: center;
 }
 
+.main-navbar{
+    position: fixed;
+    width: 100%;
+    height: 4em;
+}
+
+.logo-navbar{
+    height: 3em;
+    width: auto;
+    padding-top: 23px;
+    padding-left: 18px;
+}
+
 .title-change-color-W{
     background: #ffffff;
     transition: background 2s ease !important;
@@ -78,11 +91,17 @@
     transition: all .5s linear;
 }
 
+.navbar-on-after{
+    position: fixed;
+    width: 100%;
+}
+
 .navbar-on{
-    transform: translate(-40em,-4em);
+    transform: translate(-36em,-4em);
     width: auto;
     height: 3em;
     transition: all .5s linear;
+    
 }
 
 .back-img{
@@ -105,7 +124,7 @@
 .meet-container{
     padding-left: 3em;
     padding-right: 3em;
-    padding-top: 3em;
+    padding-top: 4em;
 }
 
 .meet-container>div{
