@@ -3,8 +3,8 @@ import './homeContainer.css';
 import {useScroll} from '../useScroll';
 
 let logo = require("../../assets/home/logo.png");
-let parallax_1 = require("../../assets/home/parallax-1.png");
-let parallax_2 = require("../../assets/home/parallax-2.png");
+let parallax_1 = require("../../assets/home/parallax-13.png");
+let parallax_2 = require("../../assets/home/parallax-23.png");
 
 const loremDummy = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel iaculis sem. Phasellus faucibus dui at nibh venenatis euismod. Fusce non pharetra nulla, sed fringilla tellus. Aliquam erat volutpat. Cras fermentum congue nibh, eget aliquet arcu finibus vel. Aenean sed felis fringilla, consectetur odio vitae, fringilla sapien. Morbi facilisis orci a odio tempus, vel tincidunt risus lacinia. Nulla quis leo at felis rutrum condimentum. Suspendisse id neque id neque tempus convallis non in erat. Maecenas pharetra ex eu libero imperdiet mattis. Vivamus sed augue id purus pharetra faucibus commodo non massa.";
 
@@ -45,9 +45,11 @@ function TitleContainer(props){
             {!sectionOn && 
                 <section className={'title-container'}>
                     <BackImg img={parallax_1} class={colorScroll?'title-change-color-W':'title-change-color-B'}/>
-                    <BackImg img={parallax_2}/>
+                    <BackImg img={parallax_2} class={''}/>
                     <div className='elem-container'>
-                        <img className={navBarOn?'navbar-on':'logo-img'} src={logo}></img>
+                        <div className="logo-container">
+                            <img className={navBarOn?'navbar-on':'logo-img'} src={logo}></img>
+                        </div>
                         <br/>
                         <span className='title'>UN NUEVO CONCEPTO EN FLORES</span>
                         <br/>
