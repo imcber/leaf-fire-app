@@ -21,7 +21,10 @@ function HomeContainer(props){
 function NavBar(props) {
     return(
         <div className="main-navbar">
-            <img className='logo-navbar' src={logo}/>
+            <div>
+                {props.listSection.map((item) => <ImgSection key={item.title} section={item} 
+                onChangeSection={props.clickSection}/>)}
+            </div>
         </div>
     );
 }
@@ -31,56 +34,86 @@ function TitleContainer(props){
     const [dataSectionView,setDataSectionView] = useState({});
     const [colorScroll,setColorScroll] = useState(false);
     const [navBarOn,setNavBarOn] = useState(false);
+    const [parallaxScroll,setParallaxScroll] = useState(false);
     const handlerScroll = (positionY) =>{
         let directionValue = scrollDirection === "up"?80:320;
+        let directionValueNavBar = scrollDirection === "up"?20:200;
         if(scrollY >= directionValue){
             setColorScroll(true);
         }else{
             setColorScroll(false);
         }
-        if(scrollY < 20){
-            setNavBarOn(false);
-        }else{
+        if(scrollY >= 20){
             setNavBarOn(true);
+        }else{
+            setNavBarOn(false);
         }
     }
-    const { scrollX, scrollY, scrollDirection } = useScroll(handlerScroll); //654
+    const { scrollY, scrollDirection } = useScroll(handlerScroll); //654
     const changeSection = (data,sectionOnInd) =>{
         setSectionOn(sectionOnInd);
-        setDataSectionView(data)
+        setDataSectionView(data);
+        setNavBarOn(true);
+        if(!sectionOnInd){
+            setColorScroll(false);
+            setNavBarOn(false);
+        }
     } 
     const goMeetUs = () => {
        document.querySelector('#meet-them-container').scrollIntoView({behavior: 'smooth'});
     }
 
+    const goHome = () => {
+        document.querySelector('.main-section').scrollIntoView({behavior: 'smooth',block:'start'});
+        setSectionOn(false);
+        setColorScroll(false);
+        setNavBarOn(false);
+     }
+
     return(
         <>
-            {!sectionOn && 
-                <section className={'title-container'}>
-                    <BackImg img={parallax_1} class={colorScroll?'title-change-color-W':'title-change-color-B'}/>
-                    <BackImg img={parallax_2} class={''}/>
-                    <div className='elem-container'>
-                        <div className={"logo-container"}>
-                            <div className={navBarOn?'navbar-on-after':''}>
-                                <img className={navBarOn?'navbar-on':'logo-img'} src={logo}/>
-                            </div>
-                        </div>
-                        <br/>
-                        <span className='title'>UN NUEVO CONCEPTO EN FLORES</span>
-                        <br/>
-                        <br/>
-                        <button className='btn-explore' onClick={goMeetUs}>Conócelo</button>
-                        <br/>
-                        <div className="pd-1">
-                            {props.listSection.map((item) => <ImgSection key={item.title} section={item}
-                                onChangeSection={changeSection}/>)}
-                        </div>
-                    </div>
-                </section>
-            }
+            {navBarOn && <NavBar listSection={props.listSection} clickSection={changeSection}/>}
+            <section className={'title-container'}>
+                <BackImg img={parallax_1} class={colorScroll?'title-change-color-W':'title-change-color-B'}/>
+                <BackImg img={parallax_2} class={''}/>
+                <div className='elem-container'>
+                    <LogoContainer navBarOn={navBarOn} goHome={goHome}/>
+                    {!sectionOn && <ElemContainer navBarOn={navBarOn} listSection={props.listSection} 
+                    changeSection={changeSection} goMeetUs={goMeetUs}/>}
+                    {sectionOn && <SectionView dataSection={dataSectionView} onChangeSection={changeSection}/>}
+                </div>
+            </section>
             <br/>
-            {!sectionOn ?<MeetThemView />:<SectionView dataSection={dataSectionView} onChangeSection={changeSection}/>}
+            {!sectionOn && <MeetThemView />}
         </>
+    );
+}
+
+function LogoContainer(props) {
+    return(
+        <div className={"logo-container"}>
+            <div className={props.navBarOn?'navbar-on-after':''}>
+                <img className={props.navBarOn?'navbar-on':'logo-img'} src={logo} onClick={props.navBarOn?props.goHome:''}/>
+            </div>
+        </div>
+    );
+}
+
+function ElemContainer(props) {
+    return(
+        <>
+            <br/>
+            <span className='title'>UN NUEVO CONCEPTO EN FLORES</span>
+            <br/>
+            <br/>
+            <button className='btn-explore' onClick={props.goMeetUs}>Conócelo</button>
+            <br/>
+            {!props.navBarOn && <div className="pd-1"> {
+                props.listSection.map((item) => <ImgSection key={item.title} section={item}
+                onChangeSection={props.changeSection}/>)
+                }
+            </div>}
+        </>      
     );
 }
 
