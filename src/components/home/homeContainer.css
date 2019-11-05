@@ -70,6 +70,15 @@
 .logo-img{
     width: auto;
     height: 10em;
+    transition: all .5s linear;
+}
+
+.navbar-on{
+    transform: translate(-40em,-4em);
+    width: auto;
+    height: 3em;
+    transition: all .5s linear;
+    position: fixed;
 }
 
 .back-img{

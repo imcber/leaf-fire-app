@@ -20,12 +20,15 @@ function TitleContainer(props){
     const [sectionOn,setSectionOn] = useState(false);
     const [dataSectionView,setDataSectionView] = useState({});
     const [colorScroll,setColorScroll] = useState(false);
+    const [navBarOn,setNavBarOn] = useState(false);
     const handlerScroll = (positionY) =>{
         let directionValue = scrollDirection === "up"?80:320;
         if(scrollY >= directionValue){
             setColorScroll(true);
+            setNavBarOn(true);
         }else{
             setColorScroll(false);
+            setNavBarOn(false);
         }
     }
     const { scrollX, scrollY, scrollDirection } = useScroll(handlerScroll); //654
@@ -44,7 +47,7 @@ function TitleContainer(props){
                     <BackImg img={parallax_1} class={colorScroll?'title-change-color-W':'title-change-color-B'}/>
                     <BackImg img={parallax_2}/>
                     <div className='elem-container'>
-                        <img className="logo-img" src={logo}></img>
+                        <img className={navBarOn?'navbar-on':'logo-img'} src={logo}></img>
                         <br/>
                         <span className='title'>UN NUEVO CONCEPTO EN FLORES</span>
                         <br/>
