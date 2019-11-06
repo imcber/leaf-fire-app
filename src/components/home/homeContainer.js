@@ -3,8 +3,8 @@ import './homeContainer.css';
 import {useScroll} from '../useScroll';
 
 let logo = require("../../assets/home/logo.png");
-let parallax_1 = require("../../assets/home/parallax-1.png");
-let parallax_2 = require("../../assets/home/parallax-2.png");
+let parallax_1 = require("../../assets/home/parallax-13.png");
+let parallax_2 = require("../../assets/home/parallax-24.png");
 
 const loremDummy = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel iaculis sem. Phasellus faucibus dui at nibh venenatis euismod. Fusce non pharetra nulla, sed fringilla tellus. Aliquam erat volutpat. Cras fermentum congue nibh, eget aliquet arcu finibus vel. Aenean sed felis fringilla, consectetur odio vitae, fringilla sapien. Morbi facilisis orci a odio tempus, vel tincidunt risus lacinia. Nulla quis leo at felis rutrum condimentum. Suspendisse id neque id neque tempus convallis non in erat. Maecenas pharetra ex eu libero imperdiet mattis. Vivamus sed augue id purus pharetra faucibus commodo non massa.";
 
@@ -38,19 +38,27 @@ function TitleContainer(props){
     const handlerScroll = (positionY) =>{
         let directionValue = scrollDirection === "up"?80:320;
         let directionValueNavBar = scrollDirection === "up"?20:120;
-        if(scrollY >= directionValue){
-            setColorScroll(true);
-        }else{
-            setColorScroll(false);
-        }
-        if(scrollY >= directionValueNavBar){
-            setNavBarOn(true);
-        }else{
-            setNavBarOn(false);
+        if(!sectionOn){    
+            if(scrollY >= directionValue){
+                setColorScroll(true);
+            }else{
+                setColorScroll(false);
+            }
+            if(scrollY >= directionValueNavBar){
+                setNavBarOn(true);
+            }else{
+                setNavBarOn(false);
+            }
         }
         if(scrollY <= 150){
             setParallaxScroll({
-                transform: 'translateY('+ scrollY/70 +'em)'
+                red:{
+                    transform: 'translateY('+ scrollY/70 +'em)'
+                },
+                yellow:{
+                    transform: 'translateY('+ -scrollY/70 +'em)'
+                }
+                
             });
         }
     }
@@ -60,7 +68,6 @@ function TitleContainer(props){
         setDataSectionView(data);
         setNavBarOn(true);
         if(!sectionOnInd){
-            setColorScroll(false);
             setNavBarOn(false);
         }
     } 
@@ -77,14 +84,13 @@ function TitleContainer(props){
 
     return(
         <>
-            {navBarOn && <NavBar listSection={props.listSection} clickSection={changeSection}/>}
             <section className={'title-container'}>
-                <BackImg img={parallax_1} classBack={colorScroll?'title-change-color-W':'title-change-color-B'} styleParallax={{}}/>
-                <BackImg img={parallax_2} classBack='parallax-background' styleParallax={parallaxScroll}/>
+                <BackImg img={parallax_1} classBack={colorScroll&&!sectionOn?'title-change-color-W':'title-change-color-B'} styleParallax={parallaxScroll.yellow}/>
+                <BackImg img={parallax_2} classBack='parallax-background' styleParallax={parallaxScroll.red}/>
                 <div className='elem-container'>
                     <LogoContainer navBarOn={navBarOn} goHome={goHome}/>
-                    {!sectionOn && <ElemContainer navBarOn={navBarOn} listSection={props.listSection} 
-                    changeSection={changeSection} goMeetUs={goMeetUs}/>}
+                    <ElemContainer navBarOn={navBarOn} listSection={props.listSection} 
+                    changeSection={changeSection} goMeetUs={goMeetUs} sectionOn={sectionOn}/>
                     {sectionOn && <SectionView dataSection={dataSectionView} onChangeSection={changeSection}/>}
                 </div>
             </section>
@@ -105,19 +111,28 @@ function LogoContainer(props) {
 }
 
 function ElemContainer(props) {
+    let classSection = props.navBarOn?'pd-1 navbar-on-section-container':'pd-1';
+    let classSectionOn = props.sectionOn?' navbar-section-open':''
     return(
         <>
-            <br/>
-            <span className='title'>UN NUEVO CONCEPTO EN FLORES</span>
-            <br/>
-            <br/>
-            <button className='btn-explore' onClick={props.goMeetUs}>Conócelo</button>
-            <br/>
-            {!props.navBarOn && <div className="pd-1"> {
-                props.listSection.map((item) => <ImgSection key={item.title} section={item}
-                onChangeSection={props.changeSection}/>)
-                }
-            </div>}
+            {!props.sectionOn &&
+            <>
+                <br/>
+                <span className='title'>UN NUEVO CONCEPTO EN FLORES</span>
+                <br/>
+                <br/>
+                <button className='btn-explore' onClick={props.goMeetUs}>Conócelo</button>
+                <br/>
+            </>
+            }
+            <div className={props.navBarOn?'navbar-on-after':''}>
+                <div className={classSection + classSectionOn}> 
+                    {
+                        props.listSection.map((item) => <ImgSection key={item.title} section={item}
+                        onChangeSection={props.changeSection}/>)
+                    }
+                </div>
+            </div>
         </>      
     );
 }

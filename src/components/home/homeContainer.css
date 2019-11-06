@@ -52,6 +52,7 @@
 
 .pd-1{
     padding-top: 5em;
+    transition: all .5s linear;
 }
 
 .list-img-title{
@@ -101,6 +102,17 @@
 .navbar-on-after{
     position: fixed;
     width: 100%;
+}
+
+.navbar-section-open{
+    transform: translate(30em,-18em) !important;
+}
+.navbar-on-section-container{
+    transform: translate(30em,-28em);
+    width: auto;
+    height: 3em;
+    transition: all .5s linear;
+    cursor: pointer;
 }
 
 .navbar-on{
