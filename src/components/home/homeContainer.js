@@ -81,7 +81,7 @@ function TitleContainer(props){
             setSectionOn(false);
         setColorScroll(false);
         setNavBarOn(false);
-        },200);
+        },100);
      }
 
     return(
@@ -131,7 +131,7 @@ function ElemContainer(props) {
                 <div className={classSection + classSectionOn}> 
                     {
                         props.listSection.map((item) => <ImgSection key={item.title} section={item}
-                        onChangeSection={props.changeSection}/>)
+                        onChangeSection={props.changeSection} sectionOn={props.sectionOn}/>)
                     }
                 </div>
             </div>
@@ -140,13 +140,14 @@ function ElemContainer(props) {
 }
 
 function ImgSection(props){
+    let classSection = props.sectionOn?'section-on-img':'list-img-title';
     function handleChange(){
         props.onChangeSection(props.section,true);
     }
 
     return(
         <button className={'btn-section '+props.section.class}>
-            <img className='list-img-title' src={props.section.img} onClick={handleChange}/>
+            <img className={classSection} src={props.section.img} onClick={handleChange}/>
         </button>
     );
 }
@@ -189,7 +190,7 @@ function SectionView(props) {
     }
 
     return(
-        
+
         <h1 onClick={returnHome}>{props.dataSection.summary}</h1>
     );
 }
