@@ -107,6 +107,12 @@
 .navbar-section-open{
     transform: translate(30em,-18em) !important;
 }
+
+.section-on-img{
+    transition: all .5s linear;
+    cursor: pointer;
+}
+
 .navbar-on-section-container{
     transform: translate(30em,-28em);
     width: auto;

@@ -18,23 +18,13 @@ function HomeContainer(props){
     );
 }
 
-function NavBar(props) {
-    return(
-        <div className="main-navbar">
-            <div>
-                {props.listSection.map((item) => <ImgSection key={item.title} section={item} 
-                onChangeSection={props.clickSection}/>)}
-            </div>
-        </div>
-    );
-}
-
 function TitleContainer(props){
     const [sectionOn,setSectionOn] = useState(false);
     const [dataSectionView,setDataSectionView] = useState({});
     const [colorScroll,setColorScroll] = useState(false);
     const [navBarOn,setNavBarOn] = useState(false);
     const [parallaxScroll,setParallaxScroll] = useState({});
+    const [ownSectionOn,setOwnSectionOn] = useState('');
     const handlerScroll = (positionY) =>{
         let directionValue = scrollDirection === "up"?80:320;
         let directionValueNavBar = scrollDirection === "up"?20:120;
@@ -64,6 +54,7 @@ function TitleContainer(props){
     }
     const { scrollY, scrollDirection } = useScroll(handlerScroll); //654
     const changeSection = (data,sectionOnInd) =>{
+        setOwnSectionOn(data.title);
         setSectionOn(sectionOnInd);
         setDataSectionView(data);
         setNavBarOn(true);
@@ -79,8 +70,9 @@ function TitleContainer(props){
         document.querySelector('.main-section').scrollIntoView({behavior: 'smooth',block:'start'});
         setTimeout(() => {
             setSectionOn(false);
-        setColorScroll(false);
-        setNavBarOn(false);
+            setColorScroll(false);
+            setNavBarOn(false);
+            setOwnSectionOn('');
         },100);
      }
 
@@ -92,7 +84,7 @@ function TitleContainer(props){
                 <div className='elem-container'>
                     <LogoContainer navBarOn={navBarOn} goHome={goHome}/>
                     <ElemContainer navBarOn={navBarOn} listSection={props.listSection} 
-                    changeSection={changeSection} goMeetUs={goMeetUs} sectionOn={sectionOn}/>
+                    changeSection={changeSection} goMeetUs={goMeetUs} sectionOn={sectionOn} ownSectionOn={ownSectionOn}/>
                     {sectionOn && <SectionView dataSection={dataSectionView} onChangeSection={changeSection}/>}
                 </div>
             </section>
@@ -131,7 +123,7 @@ function ElemContainer(props) {
                 <div className={classSection + classSectionOn}> 
                     {
                         props.listSection.map((item) => <ImgSection key={item.title} section={item}
-                        onChangeSection={props.changeSection} sectionOn={props.sectionOn}/>)
+                        onChangeSection={props.changeSection} sectionOn={props.sectionOn} ownSectionOn={props.ownSectionOn}/>)
                     }
                 </div>
             </div>
@@ -140,7 +132,7 @@ function ElemContainer(props) {
 }
 
 function ImgSection(props){
-    let classSection = props.sectionOn?'section-on-img':'list-img-title';
+    let classSection = props.ownSectionOn === props.section.title?'section-on-img':'list-img-title';
     function handleChange(){
         props.onChangeSection(props.section,true);
     }
