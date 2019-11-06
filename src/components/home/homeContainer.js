@@ -37,13 +37,13 @@ function TitleContainer(props){
     const [parallaxScroll,setParallaxScroll] = useState(false);
     const handlerScroll = (positionY) =>{
         let directionValue = scrollDirection === "up"?80:320;
-        let directionValueNavBar = scrollDirection === "up"?20:200;
+        let directionValueNavBar = scrollDirection === "up"?20:120;
         if(scrollY >= directionValue){
             setColorScroll(true);
         }else{
             setColorScroll(false);
         }
-        if(scrollY >= 20){
+        if(scrollY >= directionValueNavBar){
             setNavBarOn(true);
         }else{
             setNavBarOn(false);
@@ -75,7 +75,7 @@ function TitleContainer(props){
             {navBarOn && <NavBar listSection={props.listSection} clickSection={changeSection}/>}
             <section className={'title-container'}>
                 <BackImg img={parallax_1} class={colorScroll?'title-change-color-W':'title-change-color-B'}/>
-                <BackImg img={parallax_2} class={''}/>
+                <BackImg img={parallax_2} class={colorScroll?'parallax-background-on':'parallax-background-off'}/>
                 <div className='elem-container'>
                     <LogoContainer navBarOn={navBarOn} goHome={goHome}/>
                     {!sectionOn && <ElemContainer navBarOn={navBarOn} listSection={props.listSection} 
