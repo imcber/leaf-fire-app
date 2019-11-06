@@ -77,9 +77,11 @@ function TitleContainer(props){
 
     const goHome = () => {
         document.querySelector('.main-section').scrollIntoView({behavior: 'smooth',block:'start'});
-        setSectionOn(false);
+        setTimeout(() => {
+            setSectionOn(false);
         setColorScroll(false);
         setNavBarOn(false);
+        },200);
      }
 
     return(
