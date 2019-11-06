@@ -34,7 +34,7 @@ function TitleContainer(props){
     const [dataSectionView,setDataSectionView] = useState({});
     const [colorScroll,setColorScroll] = useState(false);
     const [navBarOn,setNavBarOn] = useState(false);
-    const [parallaxScroll,setParallaxScroll] = useState(false);
+    const [parallaxScroll,setParallaxScroll] = useState({});
     const handlerScroll = (positionY) =>{
         let directionValue = scrollDirection === "up"?80:320;
         let directionValueNavBar = scrollDirection === "up"?20:120;
@@ -47,6 +47,11 @@ function TitleContainer(props){
             setNavBarOn(true);
         }else{
             setNavBarOn(false);
+        }
+        if(scrollY <= 150){
+            setParallaxScroll({
+                transform: 'translateY('+ scrollY/70 +'em)'
+            });
         }
     }
     const { scrollY, scrollDirection } = useScroll(handlerScroll); //654
@@ -74,8 +79,8 @@ function TitleContainer(props){
         <>
             {navBarOn && <NavBar listSection={props.listSection} clickSection={changeSection}/>}
             <section className={'title-container'}>
-                <BackImg img={parallax_1} class={colorScroll?'title-change-color-W':'title-change-color-B'}/>
-                <BackImg img={parallax_2} class={colorScroll?'parallax-background-on':'parallax-background-off'}/>
+                <BackImg img={parallax_1} classBack={colorScroll?'title-change-color-W':'title-change-color-B'} styleParallax={{}}/>
+                <BackImg img={parallax_2} classBack='parallax-background' styleParallax={parallaxScroll}/>
                 <div className='elem-container'>
                     <LogoContainer navBarOn={navBarOn} goHome={goHome}/>
                     {!sectionOn && <ElemContainer navBarOn={navBarOn} listSection={props.listSection} 
@@ -93,7 +98,7 @@ function LogoContainer(props) {
     return(
         <div className={"logo-container"}>
             <div className={props.navBarOn?'navbar-on-after':''}>
-                <img className={props.navBarOn?'navbar-on':'logo-img'} src={logo} onClick={props.navBarOn?props.goHome:''}/>
+                <img className={props.navBarOn?'navbar-on':'logo-img'} src={logo} onClick={props.navBarOn?props.goHome:()=>{}}/>
             </div>
         </div>
     );
@@ -154,8 +159,8 @@ function MeetThemView(props) {
 
 function BackImg(props) {
     return(
-        <div className={'back-container ' + props.class}>
-            <img className='back-img' src={props.img}></img>
+        <div className={'back-container ' + props.classBack}>
+            <img className='back-img' src={props.img} style={props.styleParallax}></img>
         </div>
     );
 }

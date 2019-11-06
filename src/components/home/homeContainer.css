@@ -111,11 +111,7 @@
     cursor: pointer;
 }
 
-.parallax-background-off{
-    transition: all .5s linear;
-}
-.parallax-background-on{
-    transform: translateY(3em);
+.parallax-background{
     transition: all .5s linear;
 }
 
