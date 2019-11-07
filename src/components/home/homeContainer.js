@@ -102,7 +102,7 @@ function LogoContainer(props) {
 }
 
 function ElemContainer(props) {
-    let classSection = props.navBarOn?'pd-1 navbar-on-section-container':'pd-1';
+    let classSection = props.navBarOn?'navbar-on-section-container':'pd-1';
     let classSectionOn = props.sectionOn?' navbar-section-open':''
     return(
         <>
@@ -140,7 +140,6 @@ function ImgSection(props){
         </button>
     );
 }
-
 
 function MeetThemView(props) {
     function MeetThemComp(props) {

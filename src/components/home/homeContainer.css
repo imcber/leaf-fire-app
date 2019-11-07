@@ -50,11 +50,6 @@
     z-index: 2;
 }
 
-.pd-1{
-    padding-top: 5em;
-    transition: all .5s linear;
-}
-
 .list-img-title{
     width: auto;
     height: 5em;
@@ -93,8 +88,6 @@
     height: 10em;
 }
 
-
-
 .navbar-on-after{
     position: fixed;
     width: 100%;
@@ -109,44 +102,70 @@
     cursor: pointer;
 }
 
+.pd-1{
+    padding-top: 8em;
+    animation: containerCloseAnimation .5s both ease-in;
+    position: fixed;
+}
+
 .navbar-on-section-container{
-    transform: translate(30em,-28em);
+    animation: containerOpenAnimation .5s both ease-in;
     width: auto;
     height: 3em;
-    transition: all .5s linear;
     cursor: pointer;
+    position: fixed;
+    padding-top: 3em;
 }
+
+@keyframes containerCloseAnimation {
+    to {
+        right: 40%;
+        top:50%;
+    }
+    from {
+        right: 0;
+        top:0;
+    }
+}
+
+@keyframes containerOpenAnimation {
+    from {
+        right: 40%;
+        top:50%;
+    }
+    to {
+        right: 0;
+        top:0;
+    }
+}
+
 .logo-img{
     width: auto;
     height: 10em;
-    animation: closeAnimation .5s both ease-in;
+    animation: logoCloseAnimation .5s both ease-in;
 }
 .navbar-on{
-    animation: openAnimation .5s both ease-in;
+    animation: logoOpenAnimation .5s both ease-in;
     width: auto;
     position: fixed;
     top: 0;
     cursor: pointer;
 }
 
-@keyframes closeAnimation {
-  
+@keyframes logoCloseAnimation {
     from {
         height: 3em;
     }
-    
     to{
         height: 10em;
-    }
-  
+    } 
 }
 
-@keyframes openAnimation {
+@keyframes logoOpenAnimation {
     from {
         left: 50%;
         height: 10em;
     }
-  
     to {
         left: 0;
         height: 3em;
