@@ -27,16 +27,13 @@ function TitleContainer(props){
     const [ownSectionOn,setOwnSectionOn] = useState('');
     const handlerScroll = (positionY) =>{
         let directionValue = scrollDirection === "up"?80:320;
-        let directionValueNavBar = scrollDirection === "up"?20:120;
+        let directionValueNavBar = scrollDirection === "up"?80:320;
         if(!sectionOn){    
             if(scrollY >= directionValue){
                 setColorScroll(true);
-            }else{
-                setColorScroll(false);
-            }
-            if(scrollY >= directionValueNavBar){
                 setNavBarOn(true);
             }else{
+                setColorScroll(false);
                 setNavBarOn(false);
             }
         }

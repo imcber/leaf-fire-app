@@ -93,11 +93,7 @@
     height: 10em;
 }
 
-.logo-img{
-    width: auto;
-    height: 10em;
-    transition: all .5s linear;
-}
+
 
 .navbar-on-after{
     position: fixed;
@@ -120,13 +116,41 @@
     transition: all .5s linear;
     cursor: pointer;
 }
-
-.navbar-on{
-    transform: translate(-36em,-4em);
+.logo-img{
     width: auto;
-    height: 3em;
-    transition: all .5s linear;
+    height: 10em;
+    animation: closeAnimation .5s both ease-in;
+}
+.navbar-on{
+    animation: openAnimation .5s both ease-in;
+    width: auto;
+    position: fixed;
+    top: 0;
     cursor: pointer;
+}
+
+@keyframes closeAnimation {
+  
+    from {
+        height: 3em;
+    }
+    
+    to{
+        height: 10em;
+    }
+  
+}
+
+@keyframes openAnimation {
+    from {
+        left: 50%;
+        height: 10em;
+    }
+  
+    to {
+        left: 0;
+        height: 3em;
+    }
 }
 
 .parallax-background{
