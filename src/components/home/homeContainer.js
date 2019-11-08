@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import './homeContainer.css';
 import {useScroll} from '../useScroll';
 
@@ -9,6 +9,7 @@ let parallax_2 = require("../../assets/home/parallax-24.png");
 const loremDummy = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel iaculis sem. Phasellus faucibus dui at nibh venenatis euismod. Fusce non pharetra nulla, sed fringilla tellus. Aliquam erat volutpat. Cras fermentum congue nibh, eget aliquet arcu finibus vel. Aenean sed felis fringilla, consectetur odio vitae, fringilla sapien. Morbi facilisis orci a odio tempus, vel tincidunt risus lacinia. Nulla quis leo at felis rutrum condimentum. Suspendisse id neque id neque tempus convallis non in erat. Maecenas pharetra ex eu libero imperdiet mattis. Vivamus sed augue id purus pharetra faucibus commodo non massa.";
 
 function HomeContainer(props){
+    document.querySelector('body').scrollIntoView({behavior: 'smooth',block:'start'});
     return(
         <>
             <section className="main-section">
@@ -66,13 +67,15 @@ function TitleContainer(props){
     const goHome = () => {
         document.querySelector('.main-section').scrollIntoView({behavior: 'smooth',block:'start'});
         setTimeout(() => {
+            setNavBarOn(false);
             setSectionOn(false);
             setColorScroll(false);
-            setNavBarOn(false);
             setOwnSectionOn('');
-        },100);
+        },300);
      }
 
+     useEffect(() => {
+     },[navBarOn]);
     return(
         <>
             <section className={'title-container'}>
