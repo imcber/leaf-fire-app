@@ -100,6 +100,7 @@
 .section-on-img{
     transition: all .5s linear;
     cursor: pointer;
+    transform: translate(20%,10%);
 }
 
 .pd-1{
@@ -114,6 +115,7 @@
     height: 3em;
     cursor: pointer;
     position: fixed;
+    padding-right: 2em;
 }
 
 @keyframes containerCloseAnimation {
@@ -150,6 +152,7 @@
     position: fixed;
     top: 0;
     cursor: pointer;
+    padding-top: 2em;
 }
 
 @keyframes logoCloseAnimation {
@@ -158,7 +161,7 @@
         height: 10em;
     }
     from {
-        left: 0;
+        left: 2em;
         height: 3em;
     }
 }
@@ -169,7 +172,7 @@
         height: 10em;
     }
     to {
-        left: 0;
+        left: 2em;
         height: 3em;
     }
 }

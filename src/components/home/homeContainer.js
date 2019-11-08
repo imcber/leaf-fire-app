@@ -106,7 +106,6 @@ function LogoContainer(props) {
 
 function ElemContainer(props) {
     let classSection = props.navBarOn?'navbar-on-section-container':'pd-1';
-    let classSectionOn = props.sectionOn?' navbar-section-open':''
     return(
         <>
             {!props.sectionOn &&
@@ -120,7 +119,7 @@ function ElemContainer(props) {
             </>
             }
             <div className={props.navBarOn?'navbar-on-after':''}>
-                <div className={classSection + classSectionOn}> 
+                <div className={classSection}> 
                     {
                         props.listSection.map((item) => <ImgSection key={item.title} section={item}
                         onChangeSection={props.changeSection} sectionOn={props.sectionOn} ownSectionOn={props.ownSectionOn}/>)
