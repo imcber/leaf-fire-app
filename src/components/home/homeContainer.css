@@ -134,7 +134,7 @@
     }
     to {
         right: 0;
-        bottom:85%;
+        bottom:87%;
     }
 }
 
@@ -218,4 +218,18 @@
 
 .section-view-active{
     height: 100vh;
+}
+
+.img-section{
+    height: 20em;
+    width: auto;
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+.summary-section{
+    padding-left: 10%;
+    padding-right: 10%;
+    color: #ffffff;
+    font-size: 25px;
 }

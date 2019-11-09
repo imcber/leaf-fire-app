@@ -86,7 +86,7 @@ function TitleContainer(props){
                     <ElemContainer navBarOn={navBarOn} listSection={props.listSection} 
                     changeSection={changeSection} goMeetUs={goMeetUs} sectionOn={sectionOn} ownSectionOn={ownSectionOn}/>
                 </div>
-                {sectionOn && <SectionView dataSection={dataSectionView} onChangeSection={changeSection}/>}
+                {sectionOn && <SectionView dataSection={dataSectionView}/>}
             </section>
             <br/>
             {!sectionOn && <MeetThemView />}
@@ -172,15 +172,15 @@ function BackImg(props) {
 }
 
 function SectionView(props) {
-    
-    function returnHome() {
-        props.onChangeSection({},false)
-    }
 
     return(
-        <div class='section-view-active'>
-            <img src={props.dataSection.img}/>
-            <h1 onClick={returnHome}>{props.dataSection.summary}</h1>
+        <div class='section-view-active'>    
+            <div>
+                <img src={props.dataSection.img} className={'img-section'}/>
+            </div>
+            <div>
+                <span className={'summary-section'}>{props.dataSection.summary}</span>
+            </div>
         </div>
     );
 }
