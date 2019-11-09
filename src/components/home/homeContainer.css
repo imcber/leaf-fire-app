@@ -98,9 +98,7 @@
 }
 
 .section-on-img{
-    transition: all .5s linear;
-    cursor: pointer;
-    transform: translate(20%,10%);
+    display: none;
 }
 
 .pd-1{
@@ -216,4 +214,8 @@
 .text-meet{
     color: #ffffff;
     font-size: 1em;
+}
+
+.section-view-active{
+    height: 100vh;
 }

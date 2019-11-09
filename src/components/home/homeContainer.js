@@ -71,7 +71,7 @@ function TitleContainer(props){
             setSectionOn(false);
             setColorScroll(false);
             setOwnSectionOn('');
-        },300);
+        },200);
      }
 
      useEffect(() => {
@@ -81,12 +81,12 @@ function TitleContainer(props){
             <section className={'title-container'}>
                 <BackImg img={parallax_1} classBack={colorScroll&&!sectionOn?'title-change-color-W':'title-change-color-B'} styleParallax={parallaxScroll.yellow}/>
                 <BackImg img={parallax_2} classBack='parallax-background' styleParallax={parallaxScroll.red}/>
-                <div className='elem-container'>
+                <div className={!sectionOn?'elem-container':''}>
                     <LogoContainer navBarOn={navBarOn} goHome={goHome}/>
                     <ElemContainer navBarOn={navBarOn} listSection={props.listSection} 
                     changeSection={changeSection} goMeetUs={goMeetUs} sectionOn={sectionOn} ownSectionOn={ownSectionOn}/>
-                    {sectionOn && <SectionView dataSection={dataSectionView} onChangeSection={changeSection}/>}
                 </div>
+                {sectionOn && <SectionView dataSection={dataSectionView} onChangeSection={changeSection}/>}
             </section>
             <br/>
             {!sectionOn && <MeetThemView />}
@@ -96,8 +96,8 @@ function TitleContainer(props){
 
 function LogoContainer(props) {
     return(
-        <div className={"logo-container"}>
-            <div className={props.navBarOn?'navbar-on-after':''}>
+        <div className={props.navBarOn?'navbar-on-after':'logo-container'}>
+            <div>
                 <img className={props.navBarOn?'navbar-on':'logo-img'} src={logo} onClick={props.navBarOn?props.goHome:()=>{}}/>
             </div>
         </div>
@@ -118,27 +118,25 @@ function ElemContainer(props) {
                 <br/>
             </>
             }
-            <div className={props.navBarOn?'navbar-on-after':''}>
-                <div className={classSection}> 
-                    {
-                        props.listSection.map((item) => <ImgSection key={item.title} section={item}
-                        onChangeSection={props.changeSection} sectionOn={props.sectionOn} ownSectionOn={props.ownSectionOn}/>)
-                    }
-                </div>
+            <div className={classSection}> 
+                {
+                    props.listSection.map((item) => <ImgSection key={item.title} section={item}
+                    onChangeSection={props.changeSection} sectionOn={props.sectionOn} ownSectionOn={props.ownSectionOn}/>)
+                }
             </div>
         </>      
     );
 }
 
 function ImgSection(props){
-    let classSection = props.ownSectionOn === props.section.title?'section-on-img':'list-img-title';
+    let classSection = props.ownSectionOn === props.section.title?'section-on-img':'';
     function handleChange(){
         props.onChangeSection(props.section,true);
     }
 
     return(
-        <button className={'btn-section '+props.section.class}>
-            <img className={classSection} src={props.section.img} onClick={handleChange}/>
+        <button className={'btn-section '+props.section.class + ' ' + classSection}>
+            <img className={'list-img-title'} src={props.section.img} onClick={handleChange}/>
         </button>
     );
 }
@@ -180,8 +178,10 @@ function SectionView(props) {
     }
 
     return(
-
-        <h1 onClick={returnHome}>{props.dataSection.summary}</h1>
+        <div class='section-view-active'>
+            <img src={props.dataSection.img}/>
+            <h1 onClick={returnHome}>{props.dataSection.summary}</h1>
+        </div>
     );
 }
 export default HomeContainer;
