@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:300&display=swap');
+
+@font-face{ 
+	font-family: 'baseFont';
+	src: url('assets/fonts/bonveno/BonvenoCF-Light-webfont.eot');
+	src: url('assets/fonts/bonveno/BonvenoCF-Light-webfont.eot?iefix') format('eot'),
+	     url('assets/fonts/bonveno/BonvenoCF-Light-webfont.woff') format('woff'),
+	     url('assets/fonts/bonveno/BonvenoCF-Light-webfont.ttf') format('truetype'),
+	     url('assets/fonts/bonveno/BonvenoCF-Light-webfont.svg#baseFont') format('svg');
+}
+
 body {
   background: #0d3940;
   margin: 0;

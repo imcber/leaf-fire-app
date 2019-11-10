@@ -43,6 +43,7 @@
     font-size: 2em;
     font-size: 48px;
     margin-top: 70px;
+    font-family: 'baseFont', sans-serif;
 }
 
 .title-container>.elem-container{
@@ -76,7 +77,7 @@
     cursor: pointer;
     transition: all 1s ease;
     font-size: 18px;
-    font-family: Avenir;
+    font-family: 'Oswald', sans-serif;
 }
 
 .btn-explore:hover{
@@ -202,18 +203,24 @@
     padding-top: 4em;
 }
 
+.pd-1-top{
+    padding-top: 1em !important;
+}
+
 .meet-container>div{
     padding-bottom: 2rem;
 }
 
 .title-meet{
     color: #ffffff;
-    font-size: 3em;
+    font-size: 4em;
+    font-family: 'Oswald', sans-serif;
 }
 
 .text-meet{
     color: #ffffff;
-    font-size: 1em;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
 }
 
 .section-view-active{
@@ -232,4 +239,5 @@
     padding-right: 10%;
     color: #ffffff;
     font-size: 25px;
+    font-family: 'Oswald', sans-serif;
 }

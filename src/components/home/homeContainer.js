@@ -59,6 +59,7 @@ function TitleContainer(props){
         if(!sectionOnInd){
             setNavBarOn(false);
         }
+        document.querySelector('.main-section').scrollIntoView({behavior: 'smooth',block:'start'});
     } 
     const goMeetUs = () => {
        document.querySelector('#meet-them-container').scrollIntoView({behavior: 'smooth'});
@@ -155,7 +156,7 @@ function MeetThemView(props) {
                 <MeetThemComp class={"meet-left title-meet"} text={"¿Quiénes somos?"}/>
                 <MeetThemComp class={"meet-left text-meet"} text={loremDummy}/>
             </div>
-            <div className='meet-container'>
+            <div className='meet-container pd-1-top'>
                 <MeetThemComp class={"meet-rigth title-meet"} text={"¿Qué ofrecemos?"}/>
                 <MeetThemComp class={"meet-rigth text-meet"} text={loremDummy}/>
             </div>
