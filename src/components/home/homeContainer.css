@@ -4,6 +4,12 @@
     text-align: center;
 }
 
+.title-container-section-on{
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
 .main-navbar{
     position: fixed;
     width: 100%;
@@ -186,7 +192,7 @@
 }
 
 #meet-them-container{
-    height: 100vh;
+    height: auto;
 }
 
 .meet-left{
@@ -207,6 +213,10 @@
     padding-top: 1em !important;
 }
 
+.pd-5-bottom{
+    padding-bottom: 5vw !important;
+}
+
 .meet-container>div{
     padding-bottom: 2rem;
 }
@@ -224,7 +234,7 @@
 }
 
 .section-view-active{
-    height: 100vh;
+    height: auto;
 }
 
 .img-section{

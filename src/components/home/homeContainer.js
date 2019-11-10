@@ -16,7 +16,6 @@ function HomeContainer(props){
             <section className="main-section">
                 <TitleContainer listSection={props.listSection}/>
             </section>
-            <Footer/>
         </>
     );
 }
@@ -64,7 +63,7 @@ function TitleContainer(props){
         document.querySelector('.main-section').scrollIntoView({behavior: 'smooth',block:'start'});
     } 
     const goMeetUs = () => {
-       document.querySelector('#meet-them-container').scrollIntoView({behavior: 'smooth'});
+       document.querySelector('.meet-container').scrollIntoView({behavior: 'smooth'});
     }
 
     const goHome = () => {
@@ -81,7 +80,7 @@ function TitleContainer(props){
      },[navBarOn]);
     return(
         <>
-            <section className={'title-container'}>
+            <section className={sectionOn?'title-container-section-on':'title-container'}>
                 <BackImg img={parallax_1} classBack={colorScroll&&!sectionOn?'title-change-color-W':'title-change-color-B'} styleParallax={parallaxScroll.yellow}/>
                 <BackImg img={parallax_2} classBack='parallax-background' styleParallax={parallaxScroll.red}/>
                 <div className={!sectionOn?'elem-container':''}>
@@ -93,6 +92,7 @@ function TitleContainer(props){
             </section>
             <br/>
             {!sectionOn && <MeetThemView />}
+            <Footer/>
         </>
     );
 }
@@ -158,7 +158,7 @@ function MeetThemView(props) {
                 <MeetThemComp class={"meet-left title-meet"} text={"¿Quiénes somos?"}/>
                 <MeetThemComp class={"meet-left text-meet"} text={loremDummy}/>
             </div>
-            <div className='meet-container pd-1-top'>
+            <div className='meet-container pd-1-top pd-5-bottom'>
                 <MeetThemComp class={"meet-rigth title-meet"} text={"¿Qué ofrecemos?"}/>
                 <MeetThemComp class={"meet-rigth text-meet"} text={loremDummy}/>
             </div>

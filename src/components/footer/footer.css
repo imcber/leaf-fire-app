@@ -1,7 +1,29 @@
+:root{
+    --padding-content:3vw;
+}
+
 .footer {
-    grid-row-start: 2;
-    grid-row-end: 3;
-    background: #032126;
     color: white;
-    padding: 20px;
-  }
+    display: flex;
+    height: 30vw;
+    flex-wrap: wrap;
+}
+
+.footer-info{
+    width: 60%;
+    height: 100%;
+    background: #032126;
+}
+
+.footer-contact{
+    width: 40%;
+    height: auto;
+    background: #066a7c;
+    margin-top: 6vw;
+}
+
+.footer-content{
+    padding-left: var(--padding-content);    
+    padding-right: var(--padding-content);
+    padding-top: var(--padding-content);
+}
