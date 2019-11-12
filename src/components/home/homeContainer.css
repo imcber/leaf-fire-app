@@ -110,39 +110,19 @@
 
 .pd-1{
     padding-top: 3em;
-    animation: containerCloseAnimation .5s both ease-in;
+    transition: transform 0.5s linear;
     position: absolute;
+    width: 100%;
 }
 
 .navbar-on-section-container{
-    animation: containerOpenAnimation .5s both ease-in;
-    width: auto;
+    width: 100%;
     height: 3em;
     cursor: pointer;
     position: fixed;
     padding-right: 2em;
-}
-
-@keyframes containerCloseAnimation {
-    to {
-        right: 40%;
-        bottom: 10%;
-    }
-    from {
-        right: 0;
-        bottom: 80%;
-    }
-}
-
-@keyframes containerOpenAnimation {
-    from {
-        right: 40%;
-        bottom:10%;
-    }
-    to {
-        right: 0;
-        bottom:87%;
-    }
+    transition: transform 0.5s linear;
+    transform: translate(calc(80vw*.47),calc(-65vh*.47));
 }
 
 .logo-img{
@@ -152,34 +132,11 @@
 }
 .navbar-on{
     width: calc(20vw*.5);
-    position: fixed;
     top: 0;
     cursor: pointer;
     padding-top: 2em;
     transition: transform 0.5s linear;
-    transform: translateX(calc(-100vw*.47));
-}
-
-@keyframes logoCloseAnimation {
-    to {
-        left: 33%;
-        height: 10em;
-    }
-    from {
-        left: 2em;
-        height: 3em;
-    }
-}
-
-@keyframes logoOpenAnimation {
-    from {
-        left: 33%;
-        height: 10em;
-    }
-    to {
-        left: 2em;
-        height: 3em;
-    }
+    transform: translate(calc(-90vw*.47),calc(-28vh*.47));
 }
 
 .parallax-background{
