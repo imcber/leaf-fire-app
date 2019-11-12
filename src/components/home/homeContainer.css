@@ -148,16 +148,16 @@
 .logo-img{
     width: auto;
     height: 10em;
-    animation: logoCloseAnimation .3s both ease-in;
-    position: absolute;
+    transition: transform 0.5s linear;
 }
 .navbar-on{
-    animation: logoOpenAnimation .2s both ease-in;
-    width: auto;
+    width: calc(20vw*.5);
     position: fixed;
     top: 0;
     cursor: pointer;
     padding-top: 2em;
+    transition: transform 0.5s linear;
+    transform: translateX(calc(-100vw*.47));
 }
 
 @keyframes logoCloseAnimation {
