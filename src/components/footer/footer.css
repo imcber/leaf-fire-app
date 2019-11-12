@@ -108,3 +108,7 @@ hr.style-grad {
 .list-item-social{
     cursor: pointer;
 }
+
+.pd-left-3{
+    padding-left: 3vw;
+}

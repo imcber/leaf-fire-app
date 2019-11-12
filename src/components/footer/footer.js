@@ -4,6 +4,20 @@ import {MdEmail,MdPhone} from 'react-icons/md';
 import {FaHome,FaFacebookF,FaTwitter,FaInstagram} from 'react-icons/fa';
 import {IconContext} from 'react-icons';
 
+let sizeIConContact = '1.5vw';
+let sizeIConSocial = '2.2vw';
+const listFooterContent = {
+    contact:[
+        {icon:<MdEmail />,text:'leafire@gmail.com',sizeIcon:sizeIConContact,class:'',key:'email'},
+        {icon:<MdPhone />,text:'+52 7717486709',sizeIcon:sizeIConContact,class:'list-item-icon',key:'phone'}
+    ],
+    social:[
+        {icon:<FaFacebookF />,text:'',sizeIcon:sizeIConSocial,class:'list-item-social',key:'facebook'},
+        {icon:<FaTwitter />,text:'',sizeIcon:sizeIConSocial,class:'pd-left-3 list-item-social',key:'twitter'},
+        {icon:<FaInstagram />,text:'',sizeIcon:sizeIConSocial,class:'pd-left-3 list-item-social',key:'instagram'}
+    ]
+};
+
 export function Footer(props) {
     return(
         <footer className='footer'>
@@ -11,7 +25,7 @@ export function Footer(props) {
                 <FooterInfo />
             </ContainerFooter>
             <ContainerFooter class={'footer-contact'}>
-                <FooterContact />
+                <FooterContact listItemsIcon={listFooterContent}/>
             </ContainerFooter>
         </footer>
     );
@@ -49,6 +63,8 @@ function FooterInfo(props) {
 }
 
 function FooterContact(props){
+    let listContact = props.listItemsIcon.contact;
+    let listSocial = props.listItemsIcon.social;
     function LiItem(props){
         let classLi = props.class?props.class:'' + ' list-item';
         let objIconContext = {size:props.sizeIcon};
@@ -63,8 +79,6 @@ function FooterContact(props){
             </IconContext.Provider>
             );
     }
-    let sizeIConContact = '1.5vw';
-    let sizeIConSocial = '2.2vw';
     return(
         <>
             <div className={'footer-container footer-title footer-center'}>
@@ -72,14 +86,15 @@ function FooterContact(props){
             </div>
             <div className={'footer-container-contact footer-center'}>
                 <ul className='list-contact'>
-                    <LiItem icon={<MdEmail />} text={'leafire@gmail.com'} sizeIcon={sizeIConContact}/>
-                    <LiItem icon={<MdPhone />} text={'+52 7717486709'} class={'list-item-icon'} sizeIcon={sizeIConContact}/>
+                {
+                   listContact.map((item) => <LiItem key={item.key} icon={item.icon} text={item.text} sizeIcon={item.sizeIcon} class={item.class}/>)
+                }
                 </ul>
                 <LiItem icon={<FaHome />} text={'Fernandez de Lizardi #603 Pachuca Hgo.'} sizeIcon={sizeIConContact}/>
                 <ul className='list-contact-social'>
-                    <LiItem icon={<FaFacebookF />} class={'list-item-social'} sizeIcon={sizeIConSocial}/>
-                    <LiItem icon={<FaTwitter />} class={'list-item-icon list-item-social'} sizeIcon={sizeIConSocial}/>
-                    <LiItem icon={<FaInstagram />} class={'list-item-icon list-item-social'} sizeIcon={sizeIConSocial}/>
+                {
+                   listSocial.map((item) => <LiItem key={item.key} icon={item.icon} text={item.text} sizeIcon={item.sizeIcon} class={item.class}/>)
+                }
                 </ul>
             </div>
         </>
