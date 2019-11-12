@@ -20,6 +20,14 @@ function HomeContainer(props){
     );
 }
 
+function NavBar(props){
+    return(
+        <div className='solid-navbar-container'>
+
+        </div>
+    );
+}
+
 function TitleContainer(props){
     const [sectionOn,setSectionOn] = useState(false);
     const [dataSectionView,setDataSectionView] = useState({});
@@ -80,11 +88,11 @@ function TitleContainer(props){
      },[navBarOn]);
     return(
         <>
-            <section className={sectionOn?'title-container-section-on':'title-container'}>
+            <section className={sectionOn?'title-container':'title-container'}>
                 <BackImg img={parallax_1} classBack={colorScroll&&!sectionOn?'title-change-color-W':'title-change-color-B'} styleParallax={parallaxScroll.yellow}/>
                 <BackImg img={parallax_2} classBack='parallax-background' styleParallax={parallaxScroll.red}/>
-                <div className={!sectionOn?'elem-container':''}>
-                    <LogoContainer navBarOn={navBarOn} goHome={goHome}/>
+                <div className={'elem-container'}>
+                    <LogoContainer navBarOn={navBarOn} goHome={goHome} sectionOn={sectionOn}/>
                     <ElemContainer navBarOn={navBarOn} listSection={props.listSection} 
                     changeSection={changeSection} goMeetUs={goMeetUs} sectionOn={sectionOn} ownSectionOn={ownSectionOn}/>
                 </div>
@@ -97,10 +105,12 @@ function TitleContainer(props){
     );
 }
 
+
+
 function LogoContainer(props) {
     return(
-        <div className={'logo-container'}>
-            <div className={props.navBarOn?'navbar-on-after':'logo-container'}>
+        <div className={!props.sectionOn?'logo-container':''}>
+            <div className={props.navBarOn?'navbar-on-after':''}>
                 <img className={props.navBarOn?'navbar-on':'logo-img'} src={logo} onClick={props.navBarOn?props.goHome:()=>{}}/>
             </div>
         </div>
