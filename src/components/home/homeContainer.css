@@ -61,6 +61,7 @@
     width: auto;
     height: 5em;
     cursor: pointer;
+    
 }
 
 .btn-section{
@@ -122,7 +123,7 @@
     position: fixed;
     padding-right: 2em;
     transition: transform 0.5s linear;
-    transform: translate(calc(80vw*.47),calc(-65vh*.47));
+    transform: translate(calc(80vw*.47),calc(-120vh*.47));
 }
 
 .logo-img{

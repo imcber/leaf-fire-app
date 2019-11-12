@@ -99,8 +99,8 @@ function TitleContainer(props){
 
 function LogoContainer(props) {
     return(
-        <div className={props.navBarOn?'navbar-on-after':'logo-container'}>
-            <div>
+        <div className={'logo-container'}>
+            <div className={props.navBarOn?'navbar-on-after':'logo-container'}>
                 <img className={props.navBarOn?'navbar-on':'logo-img'} src={logo} onClick={props.navBarOn?props.goHome:()=>{}}/>
             </div>
         </div>
