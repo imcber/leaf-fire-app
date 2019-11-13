@@ -37,25 +37,21 @@ function TitleContainer(props){
     const [ownSectionOn,setOwnSectionOn] = useState('');
     const handlerScroll = (positionY) =>{
         let directionValue = scrollDirection === "up"?80:320;
-        let directionValueNavBar = scrollDirection === "up"?80:320;
-        if(!sectionOn){    
-            if(scrollY >= directionValue){
-                setColorScroll(true);
-                setNavBarOn(true);
-            }else{
-                setColorScroll(false);
-                setNavBarOn(false);
-            }
+        let directionValueNavBar = scrollDirection === "up"?150:50;
+        if(!sectionOn){  
+            let bandDirectionValue = scrollY >= directionValue?true:false;
+            let bandDirectionValueNavBar = scrollY >= directionValueNavBar?true:false;
+            setColorScroll(bandDirectionValue);
+            setNavBarOn(bandDirectionValueNavBar);
         }
         if(scrollY <= 150){
             setParallaxScroll({
                 red:{
-                    transform: 'translateY('+ scrollY/70 +'em)'
+                    transform: 'translateY('+ (scrollY/50) +'vw)'
                 },
                 yellow:{
-                    transform: 'translateY('+ -scrollY/70 +'em)'
+                    transform: 'translateY('+ -scrollY/70 +'vw)'
                 }
-                
             });
         }
     }
@@ -88,6 +84,7 @@ function TitleContainer(props){
      },[navBarOn]);
     return(
         <>
+            {navBarOn && <NavBar />}
             <section className={sectionOn?'title-container':'title-container'}>
                 <BackImg img={parallax_1} classBack={colorScroll&&!sectionOn?'title-change-color-W':'title-change-color-B'} styleParallax={parallaxScroll.yellow}/>
                 <BackImg img={parallax_2} classBack='parallax-background' styleParallax={parallaxScroll.red}/>
@@ -188,7 +185,7 @@ function BackImg(props) {
 function SectionView(props) {
 
     return(
-        <div class='section-view-active'>    
+        <div className='section-view-active'>    
             <div>
                 <img src={props.dataSection.img} className={'img-section'}/>
             </div>

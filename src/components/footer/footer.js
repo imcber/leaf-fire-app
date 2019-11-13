@@ -4,8 +4,8 @@ import {MdEmail,MdPhone} from 'react-icons/md';
 import {FaHome,FaFacebookF,FaTwitter,FaInstagram} from 'react-icons/fa';
 import {IconContext} from 'react-icons';
 
-let sizeIConContact = '1.5vw';
-let sizeIConSocial = '2.2vw';
+let sizeIConContact = '1.5em';
+let sizeIConSocial = '2.2em';
 const listFooterContent = {
     contact:[
         {icon:<MdEmail />,text:'leafire@gmail.com',sizeIcon:sizeIConContact,class:'',key:'email'},
