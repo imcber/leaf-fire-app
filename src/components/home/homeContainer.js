@@ -118,18 +118,19 @@ function LogoContainer(props) {
 }
 
 function ElemContainer(props) {
-    let classSection = props.navBarOn?'navbar-on-section-container':'pd-1';
+    let classSectionOn = props.sectionOn?'section-container-on':'';
+    let classSection = props.navBarOn?'navbar-on-section-container ' +classSectionOn:'pd-1';
     return(
         <>
             {!props.sectionOn &&
-            <>
-                <br/>
-                <span className='title'>UN NUEVO CONCEPTO EN FLORES</span>
-                <br/>
-                <br/>
-                <button className='btn-explore' onClick={props.goMeetUs}>Conócelo</button>
-                <br/>
-            </>
+                <div>
+                    <div className='pd-top-3-vw'>
+                        <span className='main-title'>UN NUEVO CONCEPTO EN FLORES</span>
+                    </div>
+                    <div className='pd-top-3-vw'>
+                        <button className='btn-explore' onClick={props.goMeetUs}>Conócelo</button>
+                    </div>
+                </div>
             }
             <div className={classSection}> 
                 {
