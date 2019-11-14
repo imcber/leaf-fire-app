@@ -22,7 +22,7 @@ function HomeContainer(props){
 
 function NavBar(props){
     return(
-        <div className='solid-navbar-container'>
+        <div className={props.navBarOn?'solid-navbar-container':'solid-navbar-container-close'}>
 
         </div>
     );
@@ -84,7 +84,7 @@ function TitleContainer(props){
      },[navBarOn]);
     return(
         <>
-            {navBarOn && <NavBar />}
+            <NavBar navBarOn={navBarOn}/>
             <section className={!sectionOn?'title-container':'title-container-section-on'}>
                 <BackImg img={parallax_1} classBack={colorScroll&&!sectionOn?'title-change-color-W':'title-change-color-B'} styleParallax={parallaxScroll.yellow}/>
                 <BackImg img={parallax_2} classBack='parallax-background' styleParallax={parallaxScroll.red}/>
