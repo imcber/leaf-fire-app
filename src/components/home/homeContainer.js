@@ -85,7 +85,7 @@ function TitleContainer(props){
     return(
         <>
             {navBarOn && <NavBar />}
-            <section className={sectionOn?'title-container':'title-container'}>
+            <section className={!sectionOn?'title-container':'title-container-section-on'}>
                 <BackImg img={parallax_1} classBack={colorScroll&&!sectionOn?'title-change-color-W':'title-change-color-B'} styleParallax={parallaxScroll.yellow}/>
                 <BackImg img={parallax_2} classBack='parallax-background' styleParallax={parallaxScroll.red}/>
                 <div className={'elem-container'}>

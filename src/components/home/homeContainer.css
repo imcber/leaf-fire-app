@@ -6,8 +6,8 @@
 
 .title-container-section-on{
     width: 100%;
-    height: 100%;
     text-align: center;
+    height: 100%;
 }
 
 .main-navbar{
@@ -52,6 +52,11 @@
 }
 
 .title-container>.elem-container{
+    padding-top: 5em;
+    z-index: 2;
+}
+
+.title-container-section-on>.elem-container{
     padding-top: 5em;
     z-index: 2;
 }
