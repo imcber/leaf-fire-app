@@ -3,9 +3,21 @@ import './footer.css';
 import {MdEmail,MdPhone} from 'react-icons/md';
 import {FaHome,FaFacebookF,FaTwitter,FaInstagram} from 'react-icons/fa';
 import {IconContext} from 'react-icons';
+import { layoutGenerator } from 'react-break';
 
-let sizeIConContact = '1.5em';
-let sizeIConSocial = '2.2em';
+const layout = layoutGenerator({
+    mobile: 0,
+    phablet: 550,
+    tablet: 768,
+    desktop: 992,
+  });
+const OnMobile = layout.is('mobile');
+const OnAtLeastTablet = layout.isAtLeast('tablet');
+const OnAtMostPhablet = layout.isAtMost('phablet');
+const OnDesktop = layout.is('desktop');
+
+let sizeIConContact = '15px';
+let sizeIConSocial = '20px';
 const listFooterContent = {
     contact:[
         {icon:<MdEmail />,text:'leafire@gmail.com',sizeIcon:sizeIConContact,class:'',key:'email'},
@@ -20,14 +32,28 @@ const listFooterContent = {
 
 export function Footer(props) {
     return(
-        <footer className='footer'>
-            <ContainerFooter class={'footer-info'}>
-                <FooterInfo />
-            </ContainerFooter>
-            <ContainerFooter class={'footer-contact'}>
-                <FooterContact listItemsIcon={listFooterContent}/>
-            </ContainerFooter>
-        </footer>
+        <>
+        <OnMobile>
+            <footer className='footer'>
+                <ContainerFooter class={'footer-info-resp'}>
+                    <FooterInfo/>
+                </ContainerFooter>
+                <ContainerFooter class={'footer-contact-resp'}>
+                    <FooterContact listItemsIcon={listFooterContent}/>
+                </ContainerFooter>
+            </footer>
+        </OnMobile>
+        <OnDesktop>
+            <footer className='footer'>
+                <ContainerFooter class={'footer-info'}>
+                    <FooterInfo/>
+                </ContainerFooter>
+                <ContainerFooter class={'footer-contact'}>
+                    <FooterContact listItemsIcon={listFooterContent}/>
+                </ContainerFooter>
+            </footer>
+        </OnDesktop>
+        </>
     );
 }
 

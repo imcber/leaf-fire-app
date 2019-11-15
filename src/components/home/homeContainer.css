@@ -223,7 +223,8 @@
 .solid-navbar-container-close{
     position: fixed;
     width: 100%;
-    height: 0vw;
+    height: 6vw;
+    background: #03212600;
     transition: all 0.5s linear;
 }
 
