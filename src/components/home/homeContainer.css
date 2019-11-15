@@ -215,17 +215,19 @@
 .solid-navbar-container{
     position: fixed;
     width: 100%;
-    height: 6vw;
+    height: 75px;
     background: #032126ed;
     transition: all 0.5s linear;
+    text-align: right;
 }
 
 .solid-navbar-container-close{
     position: fixed;
     width: 100%;
-    height: 6vw;
+    height: 75px;
     background: #03212600;
     transition: all 0.5s linear;
+    text-align: right;
 }
 
 .pd-top-3-vw{
@@ -240,4 +242,10 @@
     padding-right: 2em;
     transition: transform 0.5s linear;
     transform:  translate(calc(85vw*.47),calc(-9vw*.47));
+}
+
+.menu-mobile-icon{
+    padding-right: 1em;
+    padding-top: 2em;
+    color: #ffffff;
 }

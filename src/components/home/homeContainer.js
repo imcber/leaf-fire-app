@@ -3,7 +3,8 @@ import './homeContainer.css';
 import {useScroll} from '../useScroll';
 import {Footer} from '../footer/footer';
 import { layoutGenerator } from 'react-break';
-
+import {TiThMenu} from 'react-icons/ti';
+import {IconContext} from 'react-icons';
 let logo = require("../../assets/home/logo.png");
 let parallax_1 = require("../../assets/home/parallax-1.png");
 let parallax_2 = require("../../assets/home/parallax-2.png");
@@ -35,8 +36,20 @@ function HomeContainer(props){
 function NavBar(props){
     return(
         <div className={props.navBarOn?'solid-navbar-container':'solid-navbar-container-close'}>
-
+            <OnMobile>
+                <MobileMenu />
+            </OnMobile>
         </div>
+    );
+}
+
+function MobileMenu(props) {
+    return(
+        <IconContext.Provider value={{size:'2em'}} >
+            <div className='menu-mobile-icon'>
+                <TiThMenu />
+            </div>
+        </IconContext.Provider>
     );
 }
 
@@ -141,12 +154,14 @@ function ElemContainer(props) {
                     </div>
                 </div>
             }
-            <div className={classSection}> 
-                {
-                    props.listSection.map((item) => <ImgSection key={item.title} section={item}
-                    onChangeSection={props.changeSection} sectionOn={props.sectionOn} ownSectionOn={props.ownSectionOn}/>)
-                }
-            </div>
+            <OnDesktop>
+                <div className={classSection}> 
+                    {
+                        props.listSection.map((item) => <ImgSection key={item.title} section={item}
+                        onChangeSection={props.changeSection} sectionOn={props.sectionOn} ownSectionOn={props.ownSectionOn}/>)
+                    }
+                </div>
+            </OnDesktop>
         </>      
     );
 }
