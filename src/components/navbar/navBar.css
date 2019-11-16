@@ -1,0 +1,34 @@
+.solid-navbar-container{
+    position: fixed;
+    width: 100%;
+    height: 75px;
+    background: #032126ed;
+    transition: all 0.5s linear;
+    text-align: right;
+}
+
+.solid-navbar-container-close{
+    position: fixed;
+    width: 100%;
+    height: 75px;
+    background: #03212600;
+    transition: all 0.5s linear;
+    text-align: right;
+}
+
+.menu-mobile-icon{
+    padding-right: 1em;
+    padding-top: 2em;
+    color: #ffffff;
+}
+
+.icon-navbar{
+    cursor: pointer;
+}
+
+.section-container-navbar{
+    background: #ffffff;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+}

@@ -2,9 +2,8 @@ import React,{useState,useEffect} from 'react';
 import './homeContainer.css';
 import {useScroll} from '../useScroll';
 import {Footer} from '../footer/footer';
+import {NavBar} from '../navbar/navBar';
 import { layoutGenerator } from 'react-break';
-import {TiThMenu} from 'react-icons/ti';
-import {IconContext} from 'react-icons';
 let logo = require("../../assets/home/logo.png");
 let parallax_1 = require("../../assets/home/parallax-1.png");
 let parallax_2 = require("../../assets/home/parallax-2.png");
@@ -30,26 +29,6 @@ function HomeContainer(props){
                 <TitleContainer listSection={props.listSection}/>
             </section>
         </>
-    );
-}
-
-function NavBar(props){
-    return(
-        <div className={props.navBarOn?'solid-navbar-container':'solid-navbar-container-close'}>
-            <OnMobile>
-                <MobileMenu />
-            </OnMobile>
-        </div>
-    );
-}
-
-function MobileMenu(props) {
-    return(
-        <IconContext.Provider value={{size:'2em'}} >
-            <div className='menu-mobile-icon'>
-                <TiThMenu />
-            </div>
-        </IconContext.Provider>
     );
 }
 
@@ -133,7 +112,12 @@ function LogoContainer(props) {
     return(
         <div className={!props.sectionOn?'logo-container':''}>
             <div className={props.navBarOn?'navbar-on-after':''}>
-                <img className={props.navBarOn?'navbar-on':'logo-img'} src={logo} onClick={props.navBarOn?props.goHome:()=>{}}/>
+                <OnDesktop>
+                    <img className={props.navBarOn?'navbar-on':'logo-img'} src={logo} onClick={props.navBarOn?props.goHome:()=>{}}/>
+                </OnDesktop>
+                <OnMobile>
+                    <img className={props.navBarOn?'navbar-on-mobile':'logo-img-mobile'} src={logo} onClick={props.navBarOn?props.goHome:()=>{}}/>
+                </OnMobile>
             </div>
         </div>
     );

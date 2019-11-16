@@ -126,7 +126,7 @@
     position: fixed;
     padding-right: 2em;
     transition: transform 0.5s linear;
-    transform: translate(calc(80vw*.47),calc(-137vh*.47));
+    transform: translate(calc(80vw*.47),calc(-142vh*.47));
 }
 
 .logo-img{
@@ -212,24 +212,6 @@
     font-family: 'Oswald', sans-serif;
 }
 
-.solid-navbar-container{
-    position: fixed;
-    width: 100%;
-    height: 75px;
-    background: #032126ed;
-    transition: all 0.5s linear;
-    text-align: right;
-}
-
-.solid-navbar-container-close{
-    position: fixed;
-    width: 100%;
-    height: 75px;
-    background: #03212600;
-    transition: all 0.5s linear;
-    text-align: right;
-}
-
 .pd-top-3-vw{
     padding-top: 3vw;
 }
@@ -244,8 +226,16 @@
     transform:  translate(calc(85vw*.47),calc(-9vw*.47));
 }
 
-.menu-mobile-icon{
-    padding-right: 1em;
-    padding-top: 2em;
-    color: #ffffff;
+.navbar-on-mobile{
+    width: 100px;
+    top: 0;
+    cursor: pointer;
+    transition: transform 0.5s linear;
+    transform: translate(calc(-70vw*.47),calc(-24vh*.47));
+}
+
+.logo-img-mobile{
+    width: 88vw;
+    height: 22vh;
+    transition: transform 0.5s linear;
 }
