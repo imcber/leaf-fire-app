@@ -27,20 +27,23 @@ export function NavBar(props){
 
 function IconMenu(props) {
     const [openContainer,setOpenContainer] = useState(false);
+    
 
     return(
         <IconContext.Provider value={{size:'2em', className: 'icon-navbar'}} >
             <div className='menu-mobile-icon'>
-                <a onClick={() =>setOpenContainer(true)}><TiThMenu /></a>
+                <a onClick={() =>setOpenContainer(!openContainer)}><TiThMenu /></a>
             </div>
-            {openContainer && <MobileMenu />}
+            <MobileMenu openContainer={openContainer}/>
         </IconContext.Provider>
     );
 }
 
 function MobileMenu(props){
+    const openContaner = props.openContainer?'section-container-navbar':'section-container-navbar-close';
+
     return(
-        <div className='section-container-navbar'>
+        <div className={openContaner}>
 
         </div>
     );
