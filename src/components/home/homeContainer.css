@@ -231,7 +231,7 @@
     top: 0;
     cursor: pointer;
     transition: transform 0.5s linear;
-    transform: translate(calc(-70vw*.47),calc(-24vh*.47));
+    transform: translate(calc(100vw*-.3),calc(-20vh*.47));
 }
 
 .logo-img-mobile{

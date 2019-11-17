@@ -39,10 +39,11 @@ function TitleContainer(props){
     const [navBarOn,setNavBarOn] = useState(false);
     const [parallaxScroll,setParallaxScroll] = useState({});
     const [ownSectionOn,setOwnSectionOn] = useState('');
+    const [openContainerMobile,setOpenContainerMobile] = useState(false);
     const handlerScroll = (positionY) =>{
         let directionValue = scrollDirection === "up"?80:320;
         let directionValueNavBar = scrollDirection === "up"?150:50;
-        if(!sectionOn){  
+        if(!sectionOn && !openContainerMobile){  
             let bandDirectionValue = scrollY >= directionValue?true:false;
             let bandDirectionValueNavBar = scrollY >= directionValueNavBar?true:false;
             setColorScroll(bandDirectionValue);
@@ -81,14 +82,22 @@ function TitleContainer(props){
             setSectionOn(false);
             setColorScroll(false);
             setOwnSectionOn('');
+            setOpenContainerMobile(false);
         },200);
+     }
+
+     const openMenuMobile = () =>{
+        if(!navBarOn){
+            setNavBarOn(!navBarOn);
+        }
+        setOpenContainerMobile(!openContainerMobile);
      }
 
      useEffect(() => {
      },[navBarOn]);
     return(
         <>
-            <NavBar navBarOn={navBarOn}/>
+            <NavBar navBarOn={navBarOn} openContainerMobile={openContainerMobile} handlerClick={openMenuMobile} listSection={props.listSection}/>
             <section className={!sectionOn?'title-container':'title-container-section-on'}>
                 <BackImg img={parallax_1} classBack={colorScroll&&!sectionOn?'title-change-color-W':'title-change-color-B'} styleParallax={parallaxScroll.yellow}/>
                 <BackImg img={parallax_2} classBack='parallax-background' styleParallax={parallaxScroll.red}/>
