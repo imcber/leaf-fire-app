@@ -1,7 +1,6 @@
 .solid-navbar-container{
     position: fixed;
     width: 100%;
-    height: 75px;
     background: #032126ed;
     transition: all 0.5s linear;
     text-align: right;
@@ -27,17 +26,38 @@
 }
 
 .section-container-navbar{
-    background: #ffffff;
+    background: #042328;
     height: 100vh;
     width: 100vw;
     position: fixed;
     transition: all 0.5s linear;
+    transform: translateX(0);
 }
 
 .section-container-navbar-close{
-    background: #ffffff;
+    background: #0f535e;
     height: 100vh;
-    width: 0vw;
+    width: 100vw;
     position: fixed;
     transition: all 0.5s linear;
+    transform: translateX(-40em);
+}
+
+.inner-cont-icon{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20%;
+}
+
+.btn-section-mobile{
+    background-color:#fff0;
+    border: none;
+    padding-top: 10vw;
+}
+
+.list-img-title-mobile{
+    width: auto;
+    height: 7em;
+    cursor: pointer;
 }

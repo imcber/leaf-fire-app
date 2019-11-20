@@ -40,11 +40,10 @@ function IconMenu(props) {
 
 function MobileMenu(props){
     const openContaner = props.openContainer?'section-container-navbar':'section-container-navbar-close';
-    const hideContainer = !props.openContainer?'hide':'';
 
     return(
         <div className={openContaner}>
-            <div className={hideContainer}> 
+            <div className={'inner-cont-icon'}>
                 {   
                     props.listSection.map((item) => <ImgSection key={item.title} section={item}
                     onChangeSection={props.changeSection} sectionOn={props.sectionOn} ownSectionOn={props.ownSectionOn}/>)
@@ -61,8 +60,8 @@ function ImgSection(props){
     }
 
     return(
-        <button className={'btn-section '+props.section.class + ' ' + classSection}>
-            <img className={'list-img-title'} src={props.section.img} onClick={handleChange}/>
+        <button className={'btn-section-mobile '+ classSection}>
+            <img className={'list-img-title-mobile'} src={props.section.img} onClick={handleChange}/>
         </button>
     );
 }
