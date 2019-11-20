@@ -20,8 +20,7 @@ export function NavBar(props){
     return(
         <div className={props.navBarOn?'solid-navbar-container':'solid-navbar-container-close'}>
             <OnMobile>
-                <IconMenu navBarOn={props.navBarOn} openContainerMobile={props.openContainerMobile} handlerClick={props.handlerClick}/>
-                <MobileMenu openContainer={openContainerMobile} listSection={props.listSection}/>
+                <IconMenu navBarOn={props.navBarOn} openContainerMobile={props.openContainerMobile} handlerClick={props.handlerClick}/>         
             </OnMobile>
         </div>
     );

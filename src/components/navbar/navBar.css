@@ -4,12 +4,13 @@
     background: #032126ed;
     transition: all 0.5s linear;
     text-align: right;
+    height: 12%;
 }
 
 .solid-navbar-container-close{
     position: fixed;
     width: 100%;
-    height: 75px;
+    height: 12%;
     background: #03212600;
     transition: all 0.5s linear;
     text-align: right;
@@ -23,24 +24,6 @@
 
 .icon-navbar{
     cursor: pointer;
-}
-
-.section-container-navbar{
-    background: #042328;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    transition: all 0.5s linear;
-    transform: translateX(0);
-}
-
-.section-container-navbar-close{
-    background: #0f535e;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    transition: all 0.5s linear;
-    transform: translateX(-40em);
 }
 
 .inner-cont-icon{

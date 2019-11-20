@@ -4,6 +4,7 @@ import {useScroll} from '../useScroll';
 import {Footer} from '../footer/footer';
 import {NavBar} from '../navbar/navBar';
 import { layoutGenerator } from 'react-break';
+import { MobileMenu } from '../imgsection/imgsection';
 let logo = require("../../assets/home/logo.png");
 let parallax_1 = require("../../assets/home/parallax-1.png");
 let parallax_2 = require("../../assets/home/parallax-2.png");
@@ -66,6 +67,7 @@ function TitleContainer(props){
         setSectionOn(sectionOnInd);
         setDataSectionView(data);
         setNavBarOn(true);
+        setOpenContainerMobile(!openContainerMobile);
         if(!sectionOnInd){
             setNavBarOn(false);
         }
@@ -104,7 +106,9 @@ function TitleContainer(props){
                 <div className={'elem-container'}>
                     <LogoContainer navBarOn={navBarOn} goHome={goHome} sectionOn={sectionOn}/>
                     <ElemContainer navBarOn={navBarOn} listSection={props.listSection} 
-                    changeSection={changeSection} goMeetUs={goMeetUs} sectionOn={sectionOn} ownSectionOn={ownSectionOn}/>
+                    changeSection={changeSection} goMeetUs={goMeetUs} sectionOn={sectionOn} ownSectionOn={ownSectionOn}
+                    openContainerMobile={openContainerMobile}
+                    />
                 </div>
                 {sectionOn && <SectionView dataSection={dataSectionView}/>}
             </section>
@@ -114,8 +118,6 @@ function TitleContainer(props){
         </>
     );
 }
-
-
 
 function LogoContainer(props) {
     return(
@@ -155,6 +157,10 @@ function ElemContainer(props) {
                     }
                 </div>
             </OnDesktop>
+            <OnMobile>
+                <MobileMenu openContainer={props.openContainerMobile} listSection={props.listSection} 
+                changeSection={props.changeSection} ownSectionOn={props.ownSectionOn}/>
+            </OnMobile>
         </>      
     );
 }

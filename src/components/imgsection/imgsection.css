@@ -1,0 +1,23 @@
+.section-container-navbar{
+    background: #042328;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    transition: all 0.5s linear;
+    transform: translateX(0);
+    top: 12%;
+}
+
+.icon-right{
+    text-align: right;
+}
+
+.section-container-navbar-close{
+    background: #0f535e;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    transition: all 0.5s linear;
+    transform: translateX(-40em);
+    top: 12%;
+}
