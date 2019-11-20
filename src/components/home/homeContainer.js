@@ -5,23 +5,20 @@ import {Footer} from '../footer/footer';
 import {NavBar} from '../navbar/navBar';
 import { layoutGenerator } from 'react-break';
 import { MobileMenu } from '../imgsection/imgsection';
-let logo = require("../../assets/home/logo.png");
-let parallax_1 = require("../../assets/home/parallax-1.png");
-let parallax_2 = require("../../assets/home/parallax-2.png");
 
+
+const logo = require("../../assets/home/logo.png");
+const parallax_1 = require("../../assets/home/parallax-1.png");
+const parallax_2 = require("../../assets/home/parallax-2.png");
 const loremDummy = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel iaculis sem. Phasellus faucibus dui at nibh venenatis euismod. Fusce non pharetra nulla, sed fringilla tellus. Aliquam erat volutpat. Cras fermentum congue nibh, eget aliquet arcu finibus vel. Aenean sed felis fringilla, consectetur odio vitae, fringilla sapien. Morbi facilisis orci a odio tempus, vel tincidunt risus lacinia. Nulla quis leo at felis rutrum condimentum. Suspendisse id neque id neque tempus convallis non in erat. Maecenas pharetra ex eu libero imperdiet mattis. Vivamus sed augue id purus pharetra faucibus commodo non massa.";
 const layout = layoutGenerator({
-    mobile: 0,
-    phablet: 550,
-    tablet: 768,
+    mobile: 768,
     desktop: 992,
   });
-const OnMobile = layout.is('mobile');
-const OnAtLeastTablet = layout.isAtLeast('tablet');
-const OnAtMostPhablet = layout.isAtMost('phablet');
+const OnMobile = layout.isAtMost('mobile');
 const OnDesktop = layout.is('desktop');
 
-
+//PRINCIPAL CONTAINER
 function HomeContainer(props){
     document.querySelector('body').scrollIntoView({behavior: 'smooth',block:'start'});
     return(
@@ -33,14 +30,23 @@ function HomeContainer(props){
     );
 }
 
+// THIS CONTAIN THE PRINCIPAL VIEW AND HAVE THE CONTROL OF ALL :( NEED TO FIX IT!!
 function TitleContainer(props){
+    //FLAG SECTION
     const [sectionOn,setSectionOn] = useState(false);
+    //OBJECT OF DATA SECTIONS 
     const [dataSectionView,setDataSectionView] = useState({});
+    //FLAG, THIS CHANGE THE COLOR WITH THE SCROLL POSITION
     const [colorScroll,setColorScroll] = useState(false);
+    //FLAG, THIS SHOW THE NAVBAR
     const [navBarOn,setNavBarOn] = useState(false);
+    //OBJECT OF PARALLAX
     const [parallaxScroll,setParallaxScroll] = useState({});
+    //ACTUAL SECTION OPEN
     const [ownSectionOn,setOwnSectionOn] = useState('');
+    //FLAG, MOBILE SECTIONS
     const [openContainerMobile,setOpenContainerMobile] = useState(false);
+    //EVENT SCROLL
     const handlerScroll = (positionY) =>{
         let directionValue = scrollDirection === "up"?80:320;
         let directionValueNavBar = scrollDirection === "up"?150:50;
@@ -61,7 +67,8 @@ function TitleContainer(props){
             });
         }
     }
-    const { scrollY, scrollDirection } = useScroll(handlerScroll); //654
+    const { scrollY, scrollDirection } = useScroll(handlerScroll);
+    //CHANGE SECTION
     const changeSection = (data,sectionOnInd) =>{
         setOwnSectionOn(data.title);
         setSectionOn(sectionOnInd);
@@ -73,10 +80,11 @@ function TitleContainer(props){
         }
         document.querySelector('.main-section').scrollIntoView({behavior: 'smooth',block:'start'});
     } 
+    //GO TO THE MEET US SECTION
     const goMeetUs = () => {
        document.querySelector('.meet-container').scrollIntoView({behavior: 'smooth'});
     }
-
+    // HOME BUTTON
     const goHome = () => {
         document.querySelector('.main-section').scrollIntoView({behavior: 'smooth',block:'start'});
         setTimeout(() => {
@@ -87,16 +95,14 @@ function TitleContainer(props){
             setOpenContainerMobile(false);
         },200);
      }
-
-     const openMenuMobile = () =>{
+    
+     
+    const openMenuMobile = () =>{
         if(!navBarOn){
             setNavBarOn(!navBarOn);
         }
         setOpenContainerMobile(!openContainerMobile);
-     }
-
-     useEffect(() => {
-     },[navBarOn]);
+    };
     return(
         <>
             <NavBar navBarOn={navBarOn} openContainerMobile={openContainerMobile} handlerClick={openMenuMobile} listSection={props.listSection}/>
@@ -113,12 +119,12 @@ function TitleContainer(props){
                 {sectionOn && <SectionView dataSection={dataSectionView}/>}
             </section>
             <br/>
-            {!sectionOn && <MeetThemView />}
+            {!sectionOn && <AboutUs />}
             <Footer/>
         </>
     );
 }
-
+//THIS CONTAIN IMG LOGO
 function LogoContainer(props) {
     return(
         <div className={!props.sectionOn?'logo-container':''}>
@@ -134,6 +140,7 @@ function LogoContainer(props) {
     );
 }
 
+//CONTAIN IMG SECTION
 function ElemContainer(props) {
     let classSectionOn = props.sectionOn?'section-container-on':'';
     let classSection = props.navBarOn?'navbar-on-section-container ' +classSectionOn:'pd-1';
@@ -165,6 +172,7 @@ function ElemContainer(props) {
     );
 }
 
+//CREATOR IMG SECTION
 function ImgSection(props){
     let classSection = props.ownSectionOn === props.section.title?'section-on-img':'';
     function handleChange(){
@@ -178,7 +186,8 @@ function ImgSection(props){
     );
 }
 
-function MeetThemView(props) {
+//SECTION ABOUT US
+function AboutUs(props) {
     function MeetThemComp(props) {
         return(
             <div className={props.class}>
@@ -200,6 +209,7 @@ function MeetThemView(props) {
     );
 }
 
+//PARALLAX IMG
 function BackImg(props) {
     return(
         <div className={'back-container ' + props.classBack}>
@@ -208,8 +218,8 @@ function BackImg(props) {
     );
 }
 
+//SECTION VIEW
 function SectionView(props) {
-
     return(
         <div className='section-view-active'>    
             <div>

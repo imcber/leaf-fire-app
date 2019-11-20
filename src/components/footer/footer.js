@@ -5,17 +5,15 @@ import {FaHome,FaFacebookF,FaTwitter,FaInstagram} from 'react-icons/fa';
 import {IconContext} from 'react-icons';
 import { layoutGenerator } from 'react-break';
 
+//SIZE VIEW
 const layout = layoutGenerator({
-    mobile: 0,
-    phablet: 550,
-    tablet: 768,
+    mobile: 768,
     desktop: 992,
   });
-const OnMobile = layout.is('mobile');
-const OnAtLeastTablet = layout.isAtLeast('tablet');
-const OnAtMostPhablet = layout.isAtMost('phablet');
+const OnMobile = layout.isAtMost('mobile');
 const OnDesktop = layout.is('desktop');
 
+//HEIGHT ICON FOOTER
 let sizeIConContact = '15px';
 let sizeIConSocial = '20px';
 const listFooterContent = {
@@ -30,6 +28,7 @@ const listFooterContent = {
     ]
 };
 
+//FUNCTION TO RETURN
 export function Footer(props) {
     return(
         <>
@@ -57,6 +56,7 @@ export function Footer(props) {
     );
 }
 
+//CONTAINER TEXT OF FOOTER
 function ContainerFooter(props) {
     let footerClass = props.class;
     return(
@@ -66,6 +66,7 @@ function ContainerFooter(props) {
     );
 }
 
+//CONTENT INFO IN FOOTER
 function FooterInfo(props) {
     return(
         <>
@@ -88,9 +89,12 @@ function FooterInfo(props) {
     );
 }
 
+//CONTENT CONTACT FOOTER
 function FooterContact(props){
     let listContact = props.listItemsIcon.contact;
     let listSocial = props.listItemsIcon.social;
+
+    //CREATOR OF <LI/> FROM ICON
     function LiItem(props){
         let classLi = props.class?props.class:'' + ' list-item';
         let objIconContext = {size:props.sizeIcon};

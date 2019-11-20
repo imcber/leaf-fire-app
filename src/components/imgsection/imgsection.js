@@ -1,8 +1,7 @@
 import React from 'react';
 import './imgsection.css'
-import {TiThMenu} from 'react-icons/ti';
-import {IconContext} from 'react-icons';
 
+//MOBILE MENU, THIS SHOW BIGGER ICON
 export function MobileMenu(props){
     const openContainer = props.openContainer?'section-container-navbar':'section-container-navbar-close';
     return(
@@ -17,6 +16,7 @@ export function MobileMenu(props){
     );
 }
 
+//GENERATOR BUTTON OF AN ICON
 function ImgSection(props){
     let classSection = props.ownSectionOn === props.section.title?'section-on-img':'';
     function handleChange(){
