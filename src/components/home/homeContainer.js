@@ -49,7 +49,7 @@ function TitleContainer(props){
     //EVENT SCROLL
     const handlerScroll = (positionY) =>{
         let directionValue = scrollDirection === "up"?80:320;
-        let directionValueNavBar = scrollDirection === "up"?150:50;
+        let directionValueNavBar = scrollDirection === "up"?150:320;
         if(!sectionOn && !openContainerMobile){  
             let bandDirectionValue = scrollY >= directionValue?true:false;
             let bandDirectionValueNavBar = scrollY >= directionValueNavBar?true:false;
