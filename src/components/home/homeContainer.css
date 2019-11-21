@@ -128,7 +128,6 @@
     padding-right: 2em;
     transition: transform 0.5s linear;
     transform: translate(calc(80vw*.47),calc(-142vh*.47));
-    padding-top: 1%;
 }
 
 .logo-img{
