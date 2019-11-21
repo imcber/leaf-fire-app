@@ -111,16 +111,21 @@ function TitleContainer(props){
                 <BackImg img={parallax_2} classBack='parallax-background' styleParallax={parallaxScroll.red}/>
                 <div className={'elem-container'}>
                     <LogoContainer navBarOn={navBarOn} goHome={goHome} sectionOn={sectionOn}/>
-                    <ElemContainer navBarOn={navBarOn} listSection={props.listSection} 
+                    {!openContainerMobile && <ElemContainer navBarOn={navBarOn} listSection={props.listSection} 
                     changeSection={changeSection} goMeetUs={goMeetUs} sectionOn={sectionOn} ownSectionOn={ownSectionOn}
                     openContainerMobile={openContainerMobile}
-                    />
+                    />}
                 </div>
                 {sectionOn && <SectionView dataSection={dataSectionView}/>}
             </section>
             <br/>
-            {!sectionOn && <AboutUs />}
-            <Footer/>
+            {!sectionOn && !openContainerMobile && <AboutUs />}
+            {!openContainerMobile && <Footer/>}
+            
+            <OnMobile>
+                <MobileMenu openContainer={openContainerMobile} listSection={props.listSection} 
+                changeSection={changeSection} ownSectionOn={ownSectionOn}/>
+            </OnMobile>
         </>
     );
 }
@@ -164,10 +169,6 @@ function ElemContainer(props) {
                     }
                 </div>
             </OnDesktop>
-            <OnMobile>
-                <MobileMenu openContainer={props.openContainerMobile} listSection={props.listSection} 
-                changeSection={props.changeSection} ownSectionOn={props.ownSectionOn}/>
-            </OnMobile>
         </>      
     );
 }
