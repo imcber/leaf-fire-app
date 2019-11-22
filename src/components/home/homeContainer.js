@@ -47,10 +47,12 @@ function TitleContainer(props){
     //FLAG, MOBILE SECTIONS
     const [openContainerMobile,setOpenContainerMobile] = useState(false);
     //EVENT SCROLL
-    const handlerScroll = (positionY) =>{
+    
+    const { scrollY, scrollDirection } = useScroll();
+    const handlerScroll = () =>{
         let directionValue = scrollDirection === "up"?80:320;
         let directionValueNavBar = scrollDirection === "up"?150:320;
-        if(!sectionOn && !openContainerMobile){  
+        if(!sectionOn && !openContainerMobile && scrollY < 420){  
             let bandDirectionValue = scrollY >= directionValue?true:false;
             let bandDirectionValueNavBar = scrollY >= directionValueNavBar?true:false;
             setColorScroll(bandDirectionValue);
@@ -67,7 +69,11 @@ function TitleContainer(props){
             });
         }
     }
-    const { scrollY, scrollDirection } = useScroll(handlerScroll);
+
+    useEffect(() => {
+        handlerScroll();
+    },[scrollY]);
+
     //CHANGE SECTION
     const changeSection = (data,sectionOnInd) =>{
         setOwnSectionOn(data.title);
