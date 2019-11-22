@@ -231,13 +231,15 @@
 .navbar-on-mobile{
     width: 100px;
     top: 0;
+    left: 0;
     cursor: pointer;
-    transition: transform 0.5s linear;
-    transform: translate(calc(100vw*-.2));
-    padding-top: 2vw;
+    transition: all 0.5s cubic-bezier(1,0,0,1);
+    padding-top: 2vh;
+    padding-left: 2vw;
+    position: fixed;
 }
 
 .logo-img-mobile{
     width: 88vw;
-    transition: transform 0.5s linear;
+    transition: all 0.5s cubic-bezier(1,0,0,1);
 }
