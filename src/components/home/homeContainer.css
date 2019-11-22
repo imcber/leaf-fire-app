@@ -233,7 +233,6 @@
     top: 0;
     left: 0;
     cursor: pointer;
-    transition: all 0.5s cubic-bezier(1,0,0,1);
     padding-top: 2vh;
     padding-left: 2vw;
     position: fixed;
@@ -241,5 +240,4 @@
 
 .logo-img-mobile{
     width: 88vw;
-    transition: all 0.5s cubic-bezier(1,0,0,1);
 }
