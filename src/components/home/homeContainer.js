@@ -126,8 +126,7 @@ function TitleContainer(props){
             </section>
             <br/>
             {!sectionOn && !openContainerMobile && <AboutUs />}
-            {!openContainerMobile && <Footer/>}
-            
+            <Footer/>
             <OnMobile>
                 <MobileMenu openContainer={openContainerMobile} listSection={props.listSection} 
                 changeSection={changeSection} ownSectionOn={ownSectionOn}/>
